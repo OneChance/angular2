@@ -15,17 +15,29 @@ export class HeroService{
 		return this.http.get(this.heroesUrl).toPromise().then(response=>response.json()).catch(this.handleError);
 	}
 
-	save(hero:Hero):Promise<Hero>{
-		let headers = new Headers({'Content-Type':'application/json'});
+	add(hero:Hero):Promise<Hero>{
+		let headers = new Headers({'Content-Type':'application/json;charset=UTF-8'});
 		return this.http.post(this.heroesUrl,JSON.stringify(hero),{headers:headers}).toPromise().then(res=>res.json()).catch(this.handleError);
 	}
 
 	update(hero:Hero){
-		let headers = new Headers({'Content-Type':'application/json'});
-		let url = '${this.heroUrl}/${hero.id}';
+		let headers = new Headers({'Content-Type':'application/json;charset=UTF-8'});
+		let url = `${this.heroesUrl}/${hero.id}`;
 		return this.http.put(url,JSON.stringify(hero),{headers:headers}).toPromise().then(()=>hero).catch(this.handleError);
 	}
 
+	delete(hero:Hero){
+		let headers = new Headers({'Content-Type':'application/json;charset=UTF-8'});
+		let url = `${this.heroesUrl}/${hero.id}`
+		return this.http.delete(url,{headers:headers}).toPromise().catch(this.handleError);
+	}
+
+	save(hero:Hero):Promise<Hero>{
+		if(hero.id){
+			return this.update(hero);
+		}
+		return this.add(hero);
+	}
 	
 
 	private handleError(error:any){

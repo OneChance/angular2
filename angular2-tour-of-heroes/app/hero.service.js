@@ -19,14 +19,25 @@ var HeroService = (function () {
     HeroService.prototype.getHeroes = function () {
         return this.http.get(this.heroesUrl).toPromise().then(function (response) { return response.json(); }).catch(this.handleError);
     };
-    HeroService.prototype.save = function (hero) {
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+    HeroService.prototype.add = function (hero) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json;charset=UTF-8' });
         return this.http.post(this.heroesUrl, JSON.stringify(hero), { headers: headers }).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
     };
     HeroService.prototype.update = function (hero) {
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var url = '${this.heroUrl}/${hero.id}';
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json;charset=UTF-8' });
+        var url = this.heroesUrl + "/" + hero.id;
         return this.http.put(url, JSON.stringify(hero), { headers: headers }).toPromise().then(function () { return hero; }).catch(this.handleError);
+    };
+    HeroService.prototype.delete = function (hero) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json;charset=UTF-8' });
+        var url = this.heroesUrl + "/" + hero.id;
+        return this.http.delete(url, { headers: headers }).toPromise().catch(this.handleError);
+    };
+    HeroService.prototype.save = function (hero) {
+        if (hero.id) {
+            return this.update(hero);
+        }
+        return this.add(hero);
     };
     HeroService.prototype.handleError = function (error) {
         console.error('服务端错误', error);

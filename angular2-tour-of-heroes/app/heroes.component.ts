@@ -8,12 +8,14 @@ import { Router } from '@angular/router';
 @Component({
 	selector:'my-heroes',
 	templateUrl:'app/heroes.component.html',
-	styleUrls: ['app/heroes.component.css']
+	styleUrls: ['app/heroes.component.css'],
+	directives:[HeroDetailComponent]
 })
 
 export class HeroesComponent implements OnInit{
 	public heroes:Hero[];	
 	selectedHero:Hero;
+	addingHero:boolean;
 
 	ngOnInit(){
 		this.getHeroes();
@@ -30,5 +32,17 @@ export class HeroesComponent implements OnInit{
 	gotoDetail(){
 		let link = ['/detail',this.selectedHero.id];
 		this.router.navigate(link);
+	}
+
+	addHero(){
+		this.addingHero = true;
+		this.selectedHero = null;
+	}
+
+	close(savedHero:Hero){
+		this.addingHero = false;
+		if(savedHero){
+			this.getHeroes();
+		}
 	}
 }

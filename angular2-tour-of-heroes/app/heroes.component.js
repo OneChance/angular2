@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var hero_detail_component_1 = require('./hero-detail.component');
 var hero_service_1 = require('./hero.service');
 var router_1 = require('@angular/router');
 var HeroesComponent = (function () {
@@ -30,11 +31,22 @@ var HeroesComponent = (function () {
         var link = ['/detail', this.selectedHero.id];
         this.router.navigate(link);
     };
+    HeroesComponent.prototype.addHero = function () {
+        this.addingHero = true;
+        this.selectedHero = null;
+    };
+    HeroesComponent.prototype.close = function (savedHero) {
+        this.addingHero = false;
+        if (savedHero) {
+            this.getHeroes();
+        }
+    };
     HeroesComponent = __decorate([
         core_1.Component({
             selector: 'my-heroes',
             templateUrl: 'app/heroes.component.html',
-            styleUrls: ['app/heroes.component.css']
+            styleUrls: ['app/heroes.component.css'],
+            directives: [hero_detail_component_1.HeroDetailComponent]
         }), 
         __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.Router])
     ], HeroesComponent);
