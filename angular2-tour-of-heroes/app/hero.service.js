@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var hero_1 = require('./hero');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var HeroService = (function () {
@@ -17,7 +18,7 @@ var HeroService = (function () {
         this.heroesUrl = 'http://localhost:8080/api/account'; //app/heroes
     }
     HeroService.prototype.getHeroes = function () {
-        return this.http.get(this.heroesUrl).toPromise().then(function (response) { return response.json(); }).catch(this.handleError);
+        return this.http.get(this.heroesUrl).toPromise().then(function (response) { return response.json().map(function (one) { return new hero_1.Hero(one.id, one.name); }); }).catch(this.handleError);
     };
     HeroService.prototype.add = function (hero) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json;charset=UTF-8' });

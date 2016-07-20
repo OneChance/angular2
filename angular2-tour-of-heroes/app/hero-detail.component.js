@@ -29,7 +29,7 @@ var HeroDetailComponent = (function () {
             }
             else {
                 _this.navigated = false;
-                _this.hero = new hero_1.Hero();
+                _this.hero = new hero_1.Hero(null, "");
             }
         });
     };
@@ -47,13 +47,9 @@ var HeroDetailComponent = (function () {
         var _this = this;
         this.heroService.save(this.hero).then(function (hero) {
             _this.hero = hero;
-            _this.goBack(hero);
+            _this.goBack(new hero_1.Hero(hero.id, hero.name));
         }).catch(function (error) { return _this.error = error; });
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', hero_1.Hero)
-    ], HeroDetailComponent.prototype, "hero", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)

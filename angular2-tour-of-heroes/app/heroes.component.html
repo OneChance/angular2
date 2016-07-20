@@ -1,6 +1,6 @@
 <h2>我的英雄</h2>
 <ul class="heroes">
-	<li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero===selectedHero">
+	<li *ngFor="let hero of heroes" (click)="onSelect(hero)" @heroState="hero.state"><!--[class.selected]="hero===selectedHero"-->
 		<span class="badge">{{hero.id}}</span>
 		{{hero.name}}
 		<button class="delete-button" (click)="deleteHero(hero,$event)">删除</button>

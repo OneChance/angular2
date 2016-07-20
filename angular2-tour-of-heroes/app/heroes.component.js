@@ -25,7 +25,17 @@ var HeroesComponent = (function () {
         this.heroService.getHeroes().then(function (heros) { return _this.heroes = heros; });
     };
     HeroesComponent.prototype.onSelect = function (hero) {
-        this.selectedHero = hero;
+        hero.toggleState();
+        if (this.selectedHero && this.selectedHero != hero) {
+            this.selectedHero.toggleState();
+        }
+        if (hero.state === 'active') {
+            this.selectedHero = hero;
+        }
+        else {
+            this.selectedHero = null;
+        }
+        this.addingHero = false;
     };
     HeroesComponent.prototype.gotoDetail = function () {
         var link = ['/detail', this.selectedHero.id];
@@ -33,20 +43,49 @@ var HeroesComponent = (function () {
     };
     HeroesComponent.prototype.addHero = function () {
         this.addingHero = true;
+        if (this.selectedHero) {
+            this.selectedHero.toggleState();
+        }
         this.selectedHero = null;
     };
     HeroesComponent.prototype.close = function (savedHero) {
         this.addingHero = false;
         if (savedHero) {
-            this.getHeroes();
+            this.heroes.push(savedHero);
         }
+    };
+    HeroesComponent.prototype.deleteHero = function (hero, event) {
+        var _this = this;
+        event.stopPropagation();
+        this.heroService.delete(hero).then(function (res) {
+            _this.heroes = _this.heroes.filter(function (h) { return h !== hero; });
+            if (_this.selectedHero === hero) {
+                _this.selectedHero = null;
+            }
+        }).catch(function (error) { return _this.error = error; });
     };
     HeroesComponent = __decorate([
         core_1.Component({
             selector: 'my-heroes',
             templateUrl: 'app/heroes.component.html',
             styleUrls: ['app/heroes.component.css'],
-            directives: [hero_detail_component_1.HeroDetailComponent]
+            directives: [hero_detail_component_1.HeroDetailComponent],
+            animations: [
+                core_1.trigger('heroState', [
+                    core_1.state('inactive', core_1.style({
+                        backgroundColor: '#eee',
+                        transform: 'scale(1)'
+                    })),
+                    core_1.state('active', core_1.style({
+                        backgroundColor: '#cfd8dc',
+                        transform: 'scale(1.1)'
+                    })),
+                    core_1.transition('inactive=>active', core_1.animate('100ms ease-in')),
+                    core_1.transition('active=>inactive', core_1.animate('100ms ease-out')),
+                    core_1.transition('void=>*', [core_1.style({ transform: 'translateX(100%)' }), core_1.animate(200)]),
+                    core_1.transition('*=>void', [core_1.animate(200, core_1.style({ transform: 'translateX(-100%)' }))])
+                ])
+            ]
         }), 
         __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.Router])
     ], HeroesComponent);

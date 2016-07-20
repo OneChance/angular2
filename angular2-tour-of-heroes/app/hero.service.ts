@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HEROES } from './mock-heroes';
 import { Hero } from './hero';
 import { Http,Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -12,7 +11,7 @@ export class HeroService{
 	constructor(private http:Http){}
 
 	getHeroes():Promise<Hero[]>{
-		return this.http.get(this.heroesUrl).toPromise().then(response=>response.json()).catch(this.handleError);
+		return this.http.get(this.heroesUrl).toPromise().then(response=>response.json().map(one=>new Hero(one.id,one.name))).catch(this.handleError);
 	}
 
 	add(hero:Hero):Promise<Hero>{

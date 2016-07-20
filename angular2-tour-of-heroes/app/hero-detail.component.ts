@@ -10,8 +10,7 @@ import { HeroService } from './hero.service';
 }) 
 
 export class HeroDetailComponent implements OnInit,OnDestroy{
-	
-	@Input()
+	//@Input()
 	hero:Hero;
 	@Output()
 	close = new EventEmitter();
@@ -28,7 +27,7 @@ export class HeroDetailComponent implements OnInit,OnDestroy{
 				this.heroService.getHero(id).then(hero=>this.hero = hero);
 			}else{
 				this.navigated = false;
-				this.hero = new Hero();
+				this.hero = new Hero(null,"");
 			}
 		});
 	}
@@ -46,7 +45,7 @@ export class HeroDetailComponent implements OnInit,OnDestroy{
 	save(){
 		this.heroService.save(this.hero).then(hero=>{
 			this.hero=hero;
-			this.goBack(hero);
+			this.goBack(new Hero(hero.id,hero.name));
 		}).catch(error=>this.error=error);
 	}
 }
