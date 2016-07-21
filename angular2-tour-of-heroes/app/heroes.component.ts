@@ -1,4 +1,4 @@
-import { Component,trigger,state,style,transition,animate } from '@angular/core';
+import { Component,trigger,state,style,transition,animate,keyframes } from '@angular/core';
 import { Hero } from './hero';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroService } from './hero.service';
@@ -22,14 +22,20 @@ import { Router } from '@angular/router';
 			})),
 			transition('inactive=>active',animate('100ms ease-in')),
 			transition('active=>inactive',animate('100ms ease-out')),
-			transition('void=>*', [style({transform:'translateX(100%)'}),animate(200)]),
-			transition('*=>void',[animate(200, style({transform: 'translateX(-100%)'}))])
+			transition('void=>*', [animate(300, keyframes([style({opacity: 0, transform: 'translateX(-100%)', offset: 0}),
+														   style({opacity: 1, transform: 'translateX(15px)',  offset: 0.3}),
+														   style({opacity: 1, transform: 'translateX(0)',     offset: 1.0})
+      													  ]))]),
+			transition('*=>void',[animate(300, keyframes([style({opacity: 1, transform: 'translateX(0)',     offset: 0}),
+														  style({opacity: 1, transform: 'translateX(-15px)', offset: 0.7}),
+														  style({opacity: 0, transform: 'translateX(100%)',  offset: 1.0})
+														 ]))])
 		])
 	]
 })
 
 export class HeroesComponent implements OnInit{
-	public heroes:Hero[];	
+	public heroes:Hero[];
 	selectedHero:Hero;
 	addingHero:boolean;
 	error:any;
@@ -86,6 +92,6 @@ export class HeroesComponent implements OnInit{
 			if(this.selectedHero === hero ){
 				this.selectedHero = null;
 			}
-		}).catch(error=>this.error=error);
+		}).catch(error=>this.error=error);		
 	}
 }

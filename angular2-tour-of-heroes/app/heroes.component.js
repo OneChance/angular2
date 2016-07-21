@@ -82,8 +82,14 @@ var HeroesComponent = (function () {
                     })),
                     core_1.transition('inactive=>active', core_1.animate('100ms ease-in')),
                     core_1.transition('active=>inactive', core_1.animate('100ms ease-out')),
-                    core_1.transition('void=>*', [core_1.style({ transform: 'translateX(100%)' }), core_1.animate(200)]),
-                    core_1.transition('*=>void', [core_1.animate(200, core_1.style({ transform: 'translateX(-100%)' }))])
+                    core_1.transition('void=>*', [core_1.animate(300, core_1.keyframes([core_1.style({ opacity: 0, transform: 'translateX(-100%)', offset: 0 }),
+                            core_1.style({ opacity: 1, transform: 'translateX(15px)', offset: 0.3 }),
+                            core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 1.0 })
+                        ]))]),
+                    core_1.transition('*=>void', [core_1.animate(300, core_1.keyframes([core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 0 }),
+                            core_1.style({ opacity: 1, transform: 'translateX(-15px)', offset: 0.7 }),
+                            core_1.style({ opacity: 0, transform: 'translateX(100%)', offset: 1.0 })
+                        ]))])
                 ])
             ]
         }), 

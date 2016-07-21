@@ -16,6 +16,7 @@
 	margin: .5em;
 	padding: .3em 0;
 	height: 1.6em;
+	width: 18em;
 	border-radius: 4px;
 }
 .heroes li.selected:hover {
