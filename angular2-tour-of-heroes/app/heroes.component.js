@@ -16,6 +16,7 @@ var HeroesComponent = (function () {
     function HeroesComponent(heroService, router) {
         this.heroService = heroService;
         this.router = router;
+        this.deletedNum = 0;
     }
     HeroesComponent.prototype.ngOnInit = function () {
         this.getHeroes();
@@ -58,11 +59,34 @@ var HeroesComponent = (function () {
         var _this = this;
         event.stopPropagation();
         this.heroService.delete(hero).then(function (res) {
-            _this.heroes = _this.heroes.filter(function (h) { return h !== hero; });
+            _this.deleteOneHero(hero);
             if (_this.selectedHero === hero) {
                 _this.selectedHero = null;
             }
         }).catch(function (error) { return _this.error = error; });
+    };
+    HeroesComponent.prototype.deleteOneHero = function (hero) {
+        hero.state = 'void';
+        var index = this.heroes.indexOf(hero);
+        var comp = this;
+        setTimeout(function () {
+            for (var i = index; i < comp.heroes.length - comp.deletedNum; i++) {
+                if (i < comp.heroes.length - comp.deletedNum - 1) {
+                    comp.valueCopy(comp.heroes[i], comp.heroes[i + 1]);
+                    if (i === index) {
+                        comp.heroes[i].state = 'temp';
+                    }
+                }
+                else {
+                    comp.heroes[i].state = 'deleted';
+                    comp.deletedNum++;
+                }
+            }
+        }, 500);
+    };
+    HeroesComponent.prototype.valueCopy = function (hero1, hero2) {
+        hero1.id = hero2.id;
+        hero1.name = hero2.name;
     };
     HeroesComponent = __decorate([
         core_1.Component({
@@ -80,13 +104,17 @@ var HeroesComponent = (function () {
                         backgroundColor: '#cfd8dc',
                         transform: 'scale(1.1)'
                     })),
+                    core_1.state('deleted', core_1.style({
+                        opacity: 0,
+                        transform: 'scale(0)'
+                    })),
                     core_1.transition('inactive=>active', core_1.animate('100ms ease-in')),
                     core_1.transition('active=>inactive', core_1.animate('100ms ease-out')),
-                    core_1.transition('void=>*', [core_1.animate(300, core_1.keyframes([core_1.style({ opacity: 0, transform: 'translateX(-100%)', offset: 0 }),
+                    core_1.transition('void=>inactive', [core_1.animate(500, core_1.keyframes([core_1.style({ opacity: 0, transform: 'translateX(-100%)', offset: 0 }),
                             core_1.style({ opacity: 1, transform: 'translateX(15px)', offset: 0.3 }),
                             core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 1.0 })
                         ]))]),
-                    core_1.transition('*=>void', [core_1.animate(300, core_1.keyframes([core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 0 }),
+                    core_1.transition('*=>void', [core_1.animate("0.5s", core_1.keyframes([core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 0 }),
                             core_1.style({ opacity: 1, transform: 'translateX(-15px)', offset: 0.7 }),
                             core_1.style({ opacity: 0, transform: 'translateX(100%)', offset: 1.0 })
                         ]))])
