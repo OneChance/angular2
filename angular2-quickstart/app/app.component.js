@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var highlight_directive_1 = require('./highlight.directive');
+var hero_form_component_1 = require('./hero-form.component');
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -17,7 +18,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'app/app.component.html',
-            directives: [highlight_directive_1.HighlightDirective]
+            directives: [highlight_directive_1.HighlightDirective, hero_form_component_1.HeroFormComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
