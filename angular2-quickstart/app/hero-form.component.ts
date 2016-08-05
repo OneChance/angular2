@@ -12,7 +12,6 @@ export class HeroFormComponent{
 	model = new Hero(1,'恶魔猎手',this.powers[2],'献祭');
 	submitted = false;
 	onSubmit(){
-		alert("提交");
 		this.submitted = true;
 	}
 	get diagnostic(){

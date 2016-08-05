@@ -1,17 +1,14 @@
-<div class="container">
+<div class="container" [hidden]="submitted">
 	<h1>英雄信息</h1>
 	<form (ngSubmit)="onSubmit()" #heroForm="ngForm">
 		<div class="form-group">
 			<label for="name">名字</label>
 			<input type="text" class="form-control" required [(ngModel)]="model.name" name="name" #name="ngModel">
-			<div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-				请输入名字
-			</div>
+			<div [hidden]="name.valid || name.pristine" class="alert alert-danger">请输入名字</div>
 		</div>
 		<div class="form-group">
 			<label for="alterEgo">技能</label>
-			<input type="text" class="form-control" [(ngModel)]="model.alterEgo" name="alterEgo">
-		</div>
+			<input type="text" class="form-control" [(ngModel)]="model.alterEgo" name="alterEgo"></div>
 		<div class="form-group">
 			<label for="power">属性</label>
 			<select class="form-control" required [(ngModel)]="model.power" name="power">
@@ -20,4 +17,22 @@
 		</div>
 		<button type="submit" class="btn btn-default" [disabled]="!heroForm.form.valid">提交</button>
 	</form>
+</div>
+
+<div [hidden]="!submitted">
+	<h2>You submitted the following:</h2>
+	<div class="row">
+		<div class="col-xs-3">Name</div>
+		<div class="col-xs-9  pull-left">{{ model.name }}</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">Alter Ego</div>
+		<div class="col-xs-9 pull-left">{{ model.alterEgo }}</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">Power</div>
+		<div class="col-xs-9 pull-left">{{ model.power }}</div>
+	</div>
+	<br>
+	<button class="btn btn-default" (click)="submitted=false">Edit</button>
 </div>

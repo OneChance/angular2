@@ -17,7 +17,6 @@ var HeroFormComponent = (function () {
         this.submitted = false;
     }
     HeroFormComponent.prototype.onSubmit = function () {
-        alert("提交");
         this.submitted = true;
     };
     Object.defineProperty(HeroFormComponent.prototype, "diagnostic", {

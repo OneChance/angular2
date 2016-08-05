@@ -1,0 +1,6 @@
+export class Message{
+	public type:string;
+	public content:string;
+
+	constructor(type:string,content:string){}
+}
