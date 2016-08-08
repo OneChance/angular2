@@ -13,7 +13,7 @@ export class GameService{
 	private msgReceivedSource = new Subject<Message>();
 	msgReceived$ = this.msgReceivedSource.asObservable();
 
-	reveiveMsg(msg: Message) {
+	receiveMsg(msg: Message) {
     	this.msgReceivedSource.next(msg);
   	}
 
@@ -21,15 +21,19 @@ export class GameService{
 	constructor(private http:Http){}
 
 	getLoginAccount():Promise<Account>{
-		return this.http.get(this.accountUrl+'/getLoginAccount',{withCredentials:true}).toPromise().then(response=>response.json()).catch(this.handleError);
+		return this.http.get(this.accountUrl+'/getLoginAccount',{withCredentials:true}).toPromise().then(response=>response.json(),error=>this.serverError()).catch(this.handleError);
 	}
 
 	login(account){
 		let headers = new Headers({'Content-Type':'application/json;charset=UTF-8'});
-		return this.http.post(this.accountUrl+'/login',JSON.stringify(account),{headers:headers}).toPromise().then(res=>res.json()).catch(this.handleError);
+		return this.http.post(this.accountUrl+'/login',JSON.stringify(account),{headers:headers}).toPromise().then(res=>res.json(),error=>this.serverError()).catch(this.handleError);
 	}
 
-	private handleError(error:any){
-		return Promise.reject(new Message('danger','服务器异常'));
+	private handleError(error:any){	
+		return Promise.reject('error');
+	}
+
+	private serverError(){
+		this.receiveMsg(new Message('danger','服务器异常'));
 	}
 }

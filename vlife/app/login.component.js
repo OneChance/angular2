@@ -26,14 +26,12 @@ var LoginComponent = (function () {
     LoginComponent.prototype.ngAfterViewInit = function () {
     };
     LoginComponent.prototype.loginRes = function (account) {
-        this.model.msg = account.msg;
-        var modelRef = this.model;
-        setTimeout(function () {
-            modelRef.msg = "";
-        }, 2000);
-        if (!account.msg) {
-            var link = ['/profile'];
-            this.router.navigate(link);
+        if (account) {
+            this.model.msg = account.msg;
+            if (!account.msg) {
+                var link = ['/profile'];
+                this.router.navigate(link);
+            }
         }
     };
     LoginComponent = __decorate([

@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {Account} from './entity/account'
 import {GameService} from './game.service';
 import { Router } from '@angular/router';
+import { Message } from './entity/message';
 
 @Component({
 	selector:'login-form',
@@ -26,14 +27,12 @@ export class LoginComponent{
   	}
 
   	loginRes(account:Account){
-  		this.model.msg = account.msg;
-  		var modelRef = this.model;
-  		setTimeout(function(){
-  			modelRef.msg = "";
-  		},2000);
-  		if(!account.msg){
-  			let link = ['/profile'];
-			this.router.navigate(link);
-  		}
+  		if(account){
+  			this.model.msg = account.msg;
+	  		if(!account.msg){
+	  			let link = ['/profile'];
+				this.router.navigate(link);
+	  		}
+  		}  		
   	}
 }

@@ -15,11 +15,16 @@ import { Message } from './entity/message';
 
 export class AppComponent{
 	msg:Message;
+
 	constructor(private gameService:GameService){
 		gameService.msgReceived$.subscribe(msg=>this.setMsg(msg));
 	}
 
 	setMsg(msg:Message){
-		alert(msg.content)
+		this.msg = msg;
+		var msgRef = this.msg;
+		setTimeout(function(){
+  			msgRef.content = '';
+  		},2000);
 	}
 }

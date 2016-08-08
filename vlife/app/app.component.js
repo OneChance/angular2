@@ -20,7 +20,11 @@ var AppComponent = (function () {
         gameService.msgReceived$.subscribe(function (msg) { return _this.setMsg(msg); });
     }
     AppComponent.prototype.setMsg = function (msg) {
-        alert(msg.content);
+        this.msg = msg;
+        var msgRef = this.msg;
+        setTimeout(function () {
+            msgRef.content = '';
+        }, 2000);
     };
     AppComponent = __decorate([
         core_1.Component({

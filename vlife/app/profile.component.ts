@@ -14,7 +14,7 @@ export class ProfileComponent{
 	account:Account;
 
 	constructor(private gameService:GameService,private router:Router){
-		this.gameService.getLoginAccount().then(account=>this.checkAccount(account),error=>this.gameService.reveiveMsg(<Message>error));
+		this.gameService.getLoginAccount().then(account=>this.checkAccount(account),error=>this.gameService.receiveMsg(<Message>error));
 	}
 
 	info(){
@@ -22,7 +22,6 @@ export class ProfileComponent{
 	}
 
 	checkAccount(account:Account){
-		alert(account)
 		if(!account.name){
 			let link = ['/login'];
 			this.router.navigate(link);
