@@ -9,6 +9,7 @@ import { Message } from './entity/message';
 export class GameService{
 
 	private accountUrl = 'http://localhost:8080';
+	lang:string;
 
 	private msgReceivedSource = new Subject<Message>();
 	msgReceived$ = this.msgReceivedSource.asObservable();
@@ -18,22 +19,21 @@ export class GameService{
   	}
 
 
-	constructor(private http:Http){}
+	constructor(private http:Http){
+		this.lang = navigator.language;
+	}
 
 	getLoginAccount():Promise<Account>{
-		return this.http.get(this.accountUrl+'/getLoginAccount',{withCredentials:true}).toPromise().then(response=>response.json(),error=>this.serverError()).catch(this.handleError);
+		return this.http.get(this.accountUrl+'/getLoginAccount',{withCredentials:true}).toPromise().then(response=>response.json(),error=>this.serverError());
 	}
 
 	login(account){
 		let headers = new Headers({'Content-Type':'application/json;charset=UTF-8'});
-		return this.http.post(this.accountUrl+'/login',JSON.stringify(account),{headers:headers}).toPromise().then(res=>res.json(),error=>this.serverError()).catch(this.handleError);
-	}
-
-	private handleError(error:any){	
-		return Promise.reject('error');
+		return this.http.post(this.accountUrl+'/login',JSON.stringify(account),{headers:headers}).toPromise().then(res=>res.json(),error=>this.serverError());
 	}
 
 	private serverError(){
-		this.receiveMsg(new Message('danger','服务器异常'));
+		this.receiveMsg(new Message('danger','Server Error!',true));
+		return Promise.reject('server-error');
 	}
 }

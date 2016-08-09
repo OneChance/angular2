@@ -17,7 +17,7 @@
 					id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li *ngIf="account?.id">
-					<a style="cursor: pointer;">Back To Life</a>
+					<a style="cursor: pointer;" (click)="signOut()">Back To Life</a>
 				</li>
 			</ul>
 		</div>
@@ -32,7 +32,7 @@
 					<img class="img-responsive"
 								src="images/profile.png" alt="" style="cursor: pointer;" (click)="info()"></p>
 				<div class="intro-text">
-					<span class="name">{{account.name}}</span>
+					<span class="name">{{account?.name}}</span>
 					<hr class="star-light">
 					<span class="skills">
 

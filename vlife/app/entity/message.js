@@ -1,8 +1,9 @@
 "use strict";
 var Message = (function () {
-    function Message(type, content) {
+    function Message(type, content, autoClose) {
         this.type = type;
         this.content = content;
+        this.autoClose = autoClose;
     }
     return Message;
 }());

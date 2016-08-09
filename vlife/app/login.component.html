@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h2>Reincarnate Door</h2>
+				<h2>Reincarnate Door {{model.entertype | translate}}</h2>
 				<hr class="star-primary"></div>
 		</div>
 		<div class="row">
@@ -24,7 +24,7 @@
 							<label>
 								Account
 							</label>
-							<input type="text" class="form-control" placeholder="Account" required [(ngModel)]="model.account" name="account" #account="ngModel">
+							<input type="text" class="form-control" placeholder="Account" required [(ngModel)]="model.account" name="account" #account="ngModel">{{model.account}}
 							<div [hidden]="account.valid || account.pristine" class="text-danger">Please Enter Account</div>
 						</div>
 					</div>
@@ -68,13 +68,11 @@
 
 					<div class="row">
 						<div class="form-group col-xs-4">
-							<button type="submit" class="btn btn-primary btn-lg" [disabled]="!loginForm.form.valid"> <i class="fa fa-key"></i>
+							<button type="submit" class="btn btn-primary btn-lg" [disabled]="!loginForm.form.valid||submiting"><i class="fa fa-key"></i>
 								Enter
 							</button>						
 						</div>
-						<div [hidden]="!model.msg" class="text-danger">{{model.msg}}</div>
 					</div>
-
 				</form>
 			</div>
 		</div>

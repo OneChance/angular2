@@ -14,17 +14,23 @@ export class ProfileComponent{
 	account:Account;
 
 	constructor(private gameService:GameService,private router:Router){
-		this.gameService.getLoginAccount().then(account=>this.checkAccount(account),error=>this.gameService.receiveMsg(<Message>error));
+		this.gameService.getLoginAccount().then(account=>this.checkAccount(account));
 	}
 
 	info(){
 		alert('detail');
 	}
 
+	signOut(){
+		alert('sign out');
+	}
+
 	checkAccount(account:Account){
 		if(!account.name){
 			let link = ['/login'];
 			this.router.navigate(link);
+		}else{
+			this.account = account;
 		}
 	}
 }

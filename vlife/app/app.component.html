@@ -1,4 +1,4 @@
-<div class='alert alert-danger-border global_msg' *ngIf="msg?.content">
-	<button type='button' class='close info_cancel' data-dismiss='alert'></button> <strong>{{msg.content}}</strong>
+<div class='alert alert-{{msg.type}}-border global_msg' *ngIf="msg?.content" @msgState="">
+	<button type='button' class='close info_cancel' data-dismiss='alert' *ngIf="!msg.autoClose">&times;</button><strong>{{msg.content}}</strong>
 </div>
 <router-outlet></router-outlet>

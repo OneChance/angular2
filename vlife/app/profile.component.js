@@ -16,15 +16,21 @@ var ProfileComponent = (function () {
         var _this = this;
         this.gameService = gameService;
         this.router = router;
-        this.gameService.getLoginAccount().then(function (account) { return _this.checkAccount(account); }, function (error) { return _this.gameService.receiveMsg(error); });
+        this.gameService.getLoginAccount().then(function (account) { return _this.checkAccount(account); });
     }
     ProfileComponent.prototype.info = function () {
         alert('detail');
+    };
+    ProfileComponent.prototype.signOut = function () {
+        alert('sign out');
     };
     ProfileComponent.prototype.checkAccount = function (account) {
         if (!account.name) {
             var link = ['/login'];
             this.router.navigate(link);
+        }
+        else {
+            this.account = account;
         }
     };
     ProfileComponent = __decorate([

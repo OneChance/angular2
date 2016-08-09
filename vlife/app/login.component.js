@@ -12,32 +12,40 @@ var core_1 = require('@angular/core');
 var account_1 = require('./entity/account');
 var game_service_1 = require('./game.service');
 var router_1 = require('@angular/router');
+var message_1 = require('./entity/message');
+var i18n_pipe_1 = require('./tool/i18n.pipe');
 var LoginComponent = (function () {
     function LoginComponent(gameService, router) {
         this.gameService = gameService;
         this.router = router;
         this.model = new account_1.Account();
+        this.submiting = false;
         this.model.entertype = 'login';
     }
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;
-        this.gameService.login(this.model).then(function (account) { return _this.loginRes(account); });
+        this.submiting = true;
+        this.gameService.login(this.model).then(function (account) { return _this.loginRes(account); }, function (error) { return _this.submiting = false; });
     };
     LoginComponent.prototype.ngAfterViewInit = function () {
     };
     LoginComponent.prototype.loginRes = function (account) {
         if (account) {
-            this.model.msg = account.msg;
             if (!account.msg) {
                 var link = ['/profile'];
                 this.router.navigate(link);
+            }
+            else {
+                this.submiting = false;
+                this.gameService.receiveMsg(new message_1.Message("danger", account.msg, true));
             }
         }
     };
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login-form',
-            templateUrl: 'app/login.component.html'
+            templateUrl: 'app/login.component.html',
+            pipes: [i18n_pipe_1.Translate]
         }), 
         __metadata('design:paramtypes', [game_service_1.GameService, router_1.Router])
     ], LoginComponent);

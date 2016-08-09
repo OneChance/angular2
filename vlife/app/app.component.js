@@ -13,6 +13,7 @@ var router_1 = require('@angular/router');
 var login_component_1 = require('./login.component');
 var profile_component_1 = require('./profile.component');
 var game_service_1 = require('./game.service');
+var i18n_pipe_1 = require('./tool/i18n.pipe');
 var AppComponent = (function () {
     function AppComponent(gameService) {
         var _this = this;
@@ -22,9 +23,11 @@ var AppComponent = (function () {
     AppComponent.prototype.setMsg = function (msg) {
         this.msg = msg;
         var msgRef = this.msg;
-        setTimeout(function () {
-            msgRef.content = '';
-        }, 2000);
+        if (msg.autoClose) {
+            setTimeout(function () {
+                msgRef.content = '';
+            }, 2000);
+        }
     };
     AppComponent = __decorate([
         core_1.Component({
@@ -32,7 +35,20 @@ var AppComponent = (function () {
             templateUrl: 'app/app.component.html',
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [game_service_1.GameService],
-            precompile: [login_component_1.LoginComponent, profile_component_1.ProfileComponent]
+            precompile: [login_component_1.LoginComponent, profile_component_1.ProfileComponent],
+            animations: [
+                core_1.trigger('msgState', [
+                    core_1.transition('void=>*', [core_1.animate(500, core_1.keyframes([core_1.style({ opacity: 0, transform: 'translateX(-100%)', offset: 0 }),
+                            core_1.style({ opacity: 1, transform: 'translateX(15px)', offset: 0.3 }),
+                            core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 1.0 })
+                        ]))]),
+                    core_1.transition('*=>void', [core_1.animate("0.5s", core_1.keyframes([core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 0 }),
+                            core_1.style({ opacity: 1, transform: 'translateX(-15px)', offset: 0.7 }),
+                            core_1.style({ opacity: 0, transform: 'translateX(100%)', offset: 1.0 })
+                        ]))])
+                ])
+            ],
+            pipes: [i18n_pipe_1.Translate]
         }), 
         __metadata('design:paramtypes', [game_service_1.GameService])
     ], AppComponent);

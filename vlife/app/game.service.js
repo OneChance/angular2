@@ -19,24 +19,23 @@ var GameService = (function () {
         this.accountUrl = 'http://localhost:8080';
         this.msgReceivedSource = new Subject_1.Subject();
         this.msgReceived$ = this.msgReceivedSource.asObservable();
+        this.lang = navigator.language;
     }
     GameService.prototype.receiveMsg = function (msg) {
         this.msgReceivedSource.next(msg);
     };
     GameService.prototype.getLoginAccount = function () {
         var _this = this;
-        return this.http.get(this.accountUrl + '/getLoginAccount', { withCredentials: true }).toPromise().then(function (response) { return response.json(); }, function (error) { return _this.serverError(); }).catch(this.handleError);
+        return this.http.get(this.accountUrl + '/getLoginAccount', { withCredentials: true }).toPromise().then(function (response) { return response.json(); }, function (error) { return _this.serverError(); });
     };
     GameService.prototype.login = function (account) {
         var _this = this;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json;charset=UTF-8' });
-        return this.http.post(this.accountUrl + '/login', JSON.stringify(account), { headers: headers }).toPromise().then(function (res) { return res.json(); }, function (error) { return _this.serverError(); }).catch(this.handleError);
-    };
-    GameService.prototype.handleError = function (error) {
-        return Promise.reject('error');
+        return this.http.post(this.accountUrl + '/login', JSON.stringify(account), { headers: headers }).toPromise().then(function (res) { return res.json(); }, function (error) { return _this.serverError(); });
     };
     GameService.prototype.serverError = function () {
-        this.receiveMsg(new message_1.Message('danger', '服务器异常'));
+        this.receiveMsg(new message_1.Message('danger', 'Server Error!', true));
+        return Promise.reject('server-error');
     };
     GameService = __decorate([
         core_1.Injectable(), 
