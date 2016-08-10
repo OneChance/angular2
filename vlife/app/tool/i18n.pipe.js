@@ -10,12 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var game_service_1 = require('../game.service');
+var lang_1 = require('./lang');
 var Translate = (function () {
     function Translate(gameService) {
         this.gameService = gameService;
     }
     Translate.prototype.transform = function (value) {
-        return "123";
+        return lang_1.lang[value][this.gameService.lang];
     };
     Translate = __decorate([
         core_1.Pipe({ name: 'translate' }), 
