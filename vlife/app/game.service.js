@@ -19,7 +19,13 @@ var GameService = (function () {
         this.accountUrl = 'http://localhost:8080';
         this.msgReceivedSource = new Subject_1.Subject();
         this.msgReceived$ = this.msgReceivedSource.asObservable();
-        this.lang = navigator.language;
+        var arr = document.cookie.match(new RegExp("(^| )lang=([^;]*)(;|$)"));
+        if (arr != null) {
+            this.lang = arr[2];
+        }
+        else {
+            this.lang = navigator.language;
+        }
     }
     GameService.prototype.receiveMsg = function (msg) {
         this.msgReceivedSource.next(msg);
@@ -34,7 +40,7 @@ var GameService = (function () {
         return this.http.post(this.accountUrl + '/login', JSON.stringify(account), { headers: headers }).toPromise().then(function (res) { return res.json(); }, function (error) { return _this.serverError(); });
     };
     GameService.prototype.serverError = function () {
-        this.receiveMsg(new message_1.Message('danger', 'Server Error!', true));
+        this.receiveMsg(new message_1.Message("danger", "serverError", true));
         return Promise.reject('server-error');
     };
     GameService = __decorate([

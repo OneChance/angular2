@@ -41,6 +41,10 @@ var LoginComponent = (function () {
             }
         }
     };
+    LoginComponent.prototype.changeLang = function (lang) {
+        document.cookie = "lang=" + lang;
+        location.reload();
+    };
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login-form',

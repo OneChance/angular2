@@ -20,7 +20,12 @@ export class GameService{
 
 
 	constructor(private http:Http){
-		this.lang = navigator.language;
+		var arr = document.cookie.match(new RegExp("(^| )lang=([^;]*)(;|$)"));  
+	    if(arr != null){ 
+	    	this.lang = arr[2];
+	    }else{
+			this.lang = navigator.language;
+	    }
 	}
 
 	getLoginAccount():Promise<Account>{
@@ -33,7 +38,7 @@ export class GameService{
 	}
 
 	private serverError(){
-		this.receiveMsg(new Message('danger','Server Error!',true));
+		this.receiveMsg(new Message("danger","serverError",true));
 		return Promise.reject('server-error');
 	}
 }
