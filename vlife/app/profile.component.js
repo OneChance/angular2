@@ -16,6 +16,8 @@ var ProfileComponent = (function () {
         var _this = this;
         this.gameService = gameService;
         this.router = router;
+        this.lifeComplete = false;
+        this.profileImg = "images/profile.png";
         this.gameService.getLoginAccount().then(function (account) { return _this.checkAccount(account); });
     }
     ProfileComponent.prototype.info = function () {
@@ -31,6 +33,7 @@ var ProfileComponent = (function () {
         }
         else {
             this.account = account;
+            this.profileImg = "images/" + account.species.name + "/" + account.level + ".png";
         }
     };
     ProfileComponent = __decorate([

@@ -12,9 +12,11 @@ import { Message } from './entity/message';
 export class ProfileComponent{
 
 	account:Account;
+	lifeComplete:boolean = false;
+	profileImg:string="images/profile.png";
 
 	constructor(private gameService:GameService,private router:Router){
-		this.gameService.getLoginAccount().then(account=>this.checkAccount(account));
+		this.gameService.getLoginAccount().then(account=>this.checkAccount(account));	
 	}
 
 	info(){
@@ -31,6 +33,7 @@ export class ProfileComponent{
 			this.router.navigate(link);
 		}else{
 			this.account = account;
+			this.profileImg = "images/"+account.species.name+"/"+account.level+".png";
 		}
 	}
 }

@@ -1,3 +1,5 @@
+import { Species } from './species';
+
 export class Account{
 	public id:number;
 	public entertype:string;
@@ -6,4 +8,6 @@ export class Account{
 	public name:string;
 	public sex:string;
 	public msg:string;
+	public level:number;
+	public species:Species;
 }
