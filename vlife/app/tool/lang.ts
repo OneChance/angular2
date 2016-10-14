@@ -54,6 +54,10 @@ var lang = {
     "serverError":{
         "zh-CN": "服务器异常",
         "en-US": "Server Error"
+    },
+    "accounterror":{
+        "zh-CN": "通行证错误",
+        "en-US": "Account Error"
     }
 };
 
