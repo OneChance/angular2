@@ -38,11 +38,11 @@ var AppComponent = (function () {
             precompile: [login_component_1.LoginComponent, profile_component_1.ProfileComponent],
             animations: [
                 core_1.trigger('msgState', [
-                    core_1.transition('void=>*', [core_1.animate(500, core_1.keyframes([core_1.style({ opacity: 0, transform: 'translateX(-100%)', offset: 0 }),
+                    core_1.transition('void => *', [core_1.animate('500ms ease-in', core_1.keyframes([core_1.style({ opacity: 0, transform: 'translateX(-100%)', offset: 0 }),
                             core_1.style({ opacity: 1, transform: 'translateX(15px)', offset: 0.3 }),
                             core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 1.0 })
                         ]))]),
-                    core_1.transition('*=>void', [core_1.animate("0.5s", core_1.keyframes([core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 0 }),
+                    core_1.transition('* => void', [core_1.animate('500ms ease-out', core_1.keyframes([core_1.style({ opacity: 1, transform: 'translateX(0)', offset: 0 }),
                             core_1.style({ opacity: 1, transform: 'translateX(-15px)', offset: 0.7 }),
                             core_1.style({ opacity: 0, transform: 'translateX(100%)', offset: 1.0 })
                         ]))])

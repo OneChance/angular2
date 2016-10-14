@@ -16,7 +16,10 @@ var Translate = (function () {
         this.gameService = gameService;
     }
     Translate.prototype.transform = function (value) {
-        return lang_1.lang[value][this.gameService.lang];
+        if (value)
+            return lang_1.lang[value][this.gameService.lang];
+        else
+            return '';
     };
     Translate = __decorate([
         core_1.Pipe({ name: 'translate' }), 

@@ -8,6 +8,9 @@ export class Translate implements PipeTransform {
   constructor(private gameService:GameService){}
 
   transform(value: string): string {
-    return lang[value][this.gameService.lang];
+  	if(value)
+    	return lang[value][this.gameService.lang];
+    else
+    	return '';
   }
 }

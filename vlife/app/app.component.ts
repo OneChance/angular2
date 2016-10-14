@@ -14,11 +14,11 @@ import { Translate } from './tool/i18n.pipe';
 	precompile:[LoginComponent,ProfileComponent],
 	animations:[
 		trigger('msgState',[
-			transition('void=>*', [animate(500, keyframes([style({opacity: 0, transform: 'translateX(-100%)', offset: 0}),
+			transition('void => *', [animate('500ms ease-in', keyframes([style({opacity: 0, transform: 'translateX(-100%)', offset: 0}),
 														   style({opacity: 1, transform: 'translateX(15px)',  offset: 0.3}),
 														   style({opacity: 1, transform: 'translateX(0)',     offset: 1.0})
       													  ]))]),
-			transition('*=>void',[animate("0.5s", keyframes([style({opacity: 1, transform: 'translateX(0)',offset: 0}),
+			transition('* => void', [animate('500ms ease-out', keyframes([style({opacity: 1, transform: 'translateX(0)',offset: 0}),
 															 style({opacity: 1, transform: 'translateX(-15px)', offset: 0.7}),
 														     style({opacity: 0, transform: 'translateX(100%)',  offset: 1.0})
 														 ]))])
@@ -35,7 +35,7 @@ export class AppComponent{
 	}
 
 	setMsg(msg:Message){
-		this.msg = msg;
+		this.msg = msg;		
 		var msgRef = this.msg;
 		if(msg.autoClose){
 			setTimeout(function(){
