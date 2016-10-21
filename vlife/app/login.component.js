@@ -20,7 +20,7 @@ var LoginComponent = (function () {
         this.router = router;
         this.model = new account_1.Account();
         this.submiting = false;
-        this.model.entertype = 'login';
+        this.model.enterType = 'login';
     }
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;

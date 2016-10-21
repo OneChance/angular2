@@ -18,7 +18,7 @@ export class LoginComponent{
 	submiting:boolean = false;
 
 	constructor(private gameService:GameService,private router:Router){
-		this.model.entertype='login';
+		this.model.enterType='login';
 	}
 
 	onSubmit(){

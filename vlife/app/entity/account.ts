@@ -2,7 +2,7 @@ import { Species } from './species';
 
 export class Account{
 	public id:number;
-	public entertype:string;
+	public enterType:string;
 	public account:string;
 	public password:string;
 	public name:string;
