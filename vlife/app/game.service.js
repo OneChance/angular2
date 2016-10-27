@@ -16,7 +16,7 @@ var message_1 = require('./entity/message');
 var GameService = (function () {
     function GameService(http) {
         this.http = http;
-        this.accountUrl = 'http://localhost:8080';
+        this.baseUrl = 'http://localhost:8080';
         this.msgReceivedSource = new Subject_1.Subject();
         this.msgReceived$ = this.msgReceivedSource.asObservable();
         var arr = document.cookie.match(new RegExp("(^| )lang=([^;]*)(;|$)"));
@@ -32,12 +32,12 @@ var GameService = (function () {
     };
     GameService.prototype.getLoginAccount = function () {
         var _this = this;
-        return this.http.get(this.accountUrl + '/getLoginAccount', { withCredentials: true }).toPromise().then(function (response) { return response.json(); }, function (error) { return _this.serverError(); });
+        return this.http.get(this.baseUrl + '/getLoginAccount', { withCredentials: true }).toPromise().then(function (response) { return response.json(); }, function (error) { return _this.serverError(); });
     };
     GameService.prototype.login = function (account) {
         var _this = this;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json;charset=UTF-8' });
-        return this.http.post(this.accountUrl + '/login', JSON.stringify(account), { headers: headers }).toPromise().then(function (res) { return res.json(); }, function (error) { return _this.serverError(); });
+        return this.http.post(this.baseUrl + '/login', JSON.stringify(account), { headers: headers }).toPromise().then(function (res) { return res.json(); }, function (error) { return _this.serverError(); });
     };
     GameService.prototype.serverError = function () {
         this.receiveMsg(new message_1.Message("danger", "serverError", true));

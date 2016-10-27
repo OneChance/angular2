@@ -35,30 +35,30 @@
 					<span class="name">{{account?.name}}</span>
 					<hr class="star-light">
 					<span class="skills">
-						<div class="timer" *ngIf="account?.remainTime>0">
+						<div class="timer">
 							<div class="days-wrapper">
 								<span class="days"></span>
 								<br>
-								<spring:message code="day" />
+								{{"day" | translate}}
 							</div>
 							<div class="hours-wrapper">
 								<span class="hours"></span>
 								<br>
-								<spring:message code="hour" />
+								{{"hour" | translate}}
 							</div>
 							<div class="minutes-wrapper">
 								<span class="minutes"></span>
 								<br>
-								<spring:message code="minute" />
+								{{"minute" | translate}}
 							</div>
 							<div class="seconds-wrapper">
 								<span class="seconds"></span>
 								<br>
-								<spring:message code="seconds" />
+								{{"second" | translate}}
 							</div>
 						</div>
 
-						<div id="reincarnateButton" class="col-xs-12" *ngIf="false">
+						<div id="reincarnateButton" class="col-xs-12" *ngIf="account?.remainTime==0">
 							<a class="btn btn-primary btn-lg portfolio-link">{{"lifecomplete"}}</a>
 						</div>
 					</span>

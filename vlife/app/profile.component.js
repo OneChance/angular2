@@ -8,15 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/// <reference path="../typings/jquery/jquery.d.ts" />
 var core_1 = require('@angular/core');
 var game_service_1 = require('./game.service');
 var router_1 = require('@angular/router');
 var i18n_pipe_1 = require('./tool/i18n.pipe');
 var ProfileComponent = (function () {
-    function ProfileComponent(gameService, router) {
+    function ProfileComponent(gameService, router, el) {
         var _this = this;
         this.gameService = gameService;
         this.router = router;
+        this.el = el;
         this.lifeComplete = false;
         this.profileImg = "images/profile.png";
         this.gameService.getLoginAccount().then(function (account) { return _this.checkAccount(account); });
@@ -35,6 +37,26 @@ var ProfileComponent = (function () {
         else {
             this.account = account;
             this.profileImg = "images/" + account.species.name + "/" + account.level + ".png";
+            var now = new Date();
+            var countTo = account.remainTime + now.valueOf();
+            //start count
+            jQuery(this.el.nativeElement).find('.timer').countdown(countTo, function (event) {
+                var $this = jQuery(this);
+                switch (event.type) {
+                    case "seconds":
+                    case "minutes":
+                    case "hours":
+                    case "days":
+                    case "weeks":
+                    case "daysLeft":
+                        $this.find('span.' + event.type).html(event.value);
+                        break;
+                    case "finished":
+                        $this.hide();
+                        //jQuery("#reincarnateButton").show();
+                        break;
+                }
+            });
         }
     };
     ProfileComponent = __decorate([
@@ -43,7 +65,7 @@ var ProfileComponent = (function () {
             templateUrl: 'app/profile.component.html',
             pipes: [i18n_pipe_1.Translate]
         }), 
-        __metadata('design:paramtypes', [game_service_1.GameService, router_1.Router])
+        __metadata('design:paramtypes', [game_service_1.GameService, router_1.Router, core_1.ElementRef])
     ], ProfileComponent);
     return ProfileComponent;
 }());

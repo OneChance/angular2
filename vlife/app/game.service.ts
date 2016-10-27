@@ -8,7 +8,7 @@ import { Message } from './entity/message';
 @Injectable()
 export class GameService{
 
-	private accountUrl = 'http://localhost:8080';
+	private baseUrl = 'http://localhost:8080';
 	lang:string;
 
 	private msgReceivedSource = new Subject<Message>();
@@ -29,12 +29,12 @@ export class GameService{
 	}
 
 	getLoginAccount():Promise<Account>{
-		return this.http.get(this.accountUrl+'/getLoginAccount',{withCredentials:true}).toPromise().then(response=>response.json(),error=>this.serverError());
+		return this.http.get(this.baseUrl+'/getLoginAccount',{withCredentials:true}).toPromise().then(response=>response.json(),error=>this.serverError());
 	}
 
 	login(account){
 		let headers = new Headers({'Content-Type':'application/json;charset=UTF-8'});
-		return this.http.post(this.accountUrl+'/login',JSON.stringify(account),{headers:headers}).toPromise().then(res=>res.json(),error=>this.serverError());
+		return this.http.post(this.baseUrl+'/login',JSON.stringify(account),{headers:headers}).toPromise().then(res=>res.json(),error=>this.serverError());
 	}
 
 	private serverError(){

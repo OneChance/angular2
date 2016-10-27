@@ -71,6 +71,22 @@ var lang = {
     "accountexist": {
         "zh-CN": "无效的通行证",
         "en-US": "Invalid Account"
+    },
+    "day": {
+        "zh-CN": "天",
+        "en-US": "Day"
+    },
+    "hour": {
+        "zh-CN": "时",
+        "en-US": "Hour"
+    },
+    "minute": {
+        "zh-CN": "分",
+        "en-US": "Minute"
+    },
+    "second": {
+        "zh-CN": "秒",
+        "en-US": "Second"
     }
 };
 exports.lang = lang;

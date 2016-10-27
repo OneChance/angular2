@@ -67,7 +67,7 @@ a:hover { text-decoration: none; }
 
 .inner-bg {
     padding: 55px 0 60px 0;
-    background: url(../img/pattern-3.png);
+    background: url(../images/countdown/pattern-3.png);
     -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
     -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
     box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
@@ -113,7 +113,7 @@ a:hover { text-decoration: none; }
 .timer .hours-wrapper:hover,
 .timer .minutes-wrapper:hover,
 .timer .seconds-wrapper:hover {
-    background: #2c3e50 url(../img/pattern-2.png);
+    background: #2c3e50 url(../images/countdown/pattern-2.png);
     text-shadow: none;
 }
 
