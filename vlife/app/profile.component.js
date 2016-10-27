@@ -27,7 +27,12 @@ var ProfileComponent = (function () {
         alert('detail');
     };
     ProfileComponent.prototype.signOut = function () {
-        alert('sign out');
+        var _this = this;
+        this.gameService.loginOut().then(function () { return _this.loginOut(); });
+    };
+    ProfileComponent.prototype.loginOut = function () {
+        var link = ['/login'];
+        this.router.navigate(link);
     };
     ProfileComponent.prototype.checkAccount = function (account) {
         if (!account.name) {

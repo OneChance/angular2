@@ -9,6 +9,7 @@ import { Message } from './entity/message';
 export class GameService{
 
 	private baseUrl = 'http://localhost:8080';
+	headers = new Headers({'Content-Type':'application/json;charset=UTF-8'});
 	lang:string;
 
 	private msgReceivedSource = new Subject<Message>();
@@ -33,8 +34,11 @@ export class GameService{
 	}
 
 	login(account){
-		let headers = new Headers({'Content-Type':'application/json;charset=UTF-8'});
-		return this.http.post(this.baseUrl+'/login',JSON.stringify(account),{headers:headers}).toPromise().then(res=>res.json(),error=>this.serverError());
+		return this.http.post(this.baseUrl+'/login',JSON.stringify(account),{headers:this.headers}).toPromise().then(res=>res.json(),error=>this.serverError());
+	}
+
+	loginOut(){
+		return this.http.post(this.baseUrl+'/loginOut',{},{headers:this.headers}).toPromise().then(()=>{},error=>this.serverError());
 	}
 
 	private serverError(){

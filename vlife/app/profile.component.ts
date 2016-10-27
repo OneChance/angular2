@@ -29,7 +29,12 @@ export class ProfileComponent{
 	}
 
 	signOut(){
-		alert('sign out');
+		this.gameService.loginOut().then(()=>this.loginOut())
+	}
+
+	loginOut(){
+		let link = ['/login'];
+		this.router.navigate(link);
 	}
 
 	checkAccount(account:Account){
