@@ -40,7 +40,7 @@
 						</div>
 					</div>
 
-					<div class="row control-group" *ngIf="model.entertype==='reg'">
+					<div class="row control-group" *ngIf="model.enterType==='reg'">
 						<div class="form-group col-xs-12 floating-label-form-group controls">
 							<label>{{"name" | translate}}</label>
 							<input type="text" class="form-control" placeholder="{{'name' | translate}}" id="{{'name' | translate}}" required [(ngModel)]="model.name" name="name" #name="ngModel">
@@ -48,7 +48,7 @@
 						</div>
 					</div>
 
-					<div class="row control-group" *ngIf="model.entertype==='reg'">
+					<div class="row control-group" *ngIf="model.enterType==='reg'">
 						<div class="col-xs-12 controls">
 							<div style="margin-top: 30px; margin-bottom: 20px;">
 								<input type="radio" id="sexm" name="sex" required value="m" [(ngModel)]="model.sex">

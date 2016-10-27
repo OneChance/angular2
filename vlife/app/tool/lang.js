@@ -4,6 +4,14 @@ var lang = {
         "zh-CN": "登陆",
         "en-US": "Login"
     },
+    "Reincarnate": {
+        "zh-CN": "轮回",
+        "en-US": "Reincarnate"
+    },
+    "BackToLife": {
+        "zh-CN": "回到现实世界",
+        "en-US": "Back To Life"
+    },
     "reincarnateDoor": {
         "zh-CN": "轮回之门",
         "en-US": "Reincarnate Door"
@@ -59,6 +67,10 @@ var lang = {
     "accounterror": {
         "zh-CN": "通行证错误",
         "en-US": "Account Error"
+    },
+    "accountexist": {
+        "zh-CN": "无效的通行证",
+        "en-US": "Invalid Account"
     }
 };
 exports.lang = lang;

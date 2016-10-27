@@ -10,4 +10,5 @@ export class Account{
 	public msg:string;
 	public level:number;
 	public species:Species;
+	public remainTime:number;
 }

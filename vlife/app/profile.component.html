@@ -9,7 +9,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand">Reincarnate</a>
+			<a class="navbar-brand">{{"Reincarnate" | translate}}</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,7 +17,7 @@
 					id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li *ngIf="account?.id">
-					<a style="cursor: pointer;" (click)="signOut()">Back To Life</a>
+					<a style="cursor: pointer;" (click)="signOut()">{{"BackToLife" | translate}}</a>
 				</li>
 			</ul>
 		</div>
@@ -35,8 +35,7 @@
 					<span class="name">{{account?.name}}</span>
 					<hr class="star-light">
 					<span class="skills">
-
-						<div class="timer" *ngIf="!lifeComplete">
+						<div class="timer" *ngIf="account?.remainTime>0">
 							<div class="days-wrapper">
 								<span class="days"></span>
 								<br>
@@ -59,7 +58,7 @@
 							</div>
 						</div>
 
-						<div id="reincarnateButton" class="col-xs-12" *ngIf="lifeComplete">
+						<div id="reincarnateButton" class="col-xs-12" *ngIf="false">
 							<a class="btn btn-primary btn-lg portfolio-link">{{"lifecomplete"}}</a>
 						</div>
 					</span>

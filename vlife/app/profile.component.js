@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var game_service_1 = require('./game.service');
 var router_1 = require('@angular/router');
+var i18n_pipe_1 = require('./tool/i18n.pipe');
 var ProfileComponent = (function () {
     function ProfileComponent(gameService, router) {
         var _this = this;
@@ -39,7 +40,8 @@ var ProfileComponent = (function () {
     ProfileComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            templateUrl: 'app/profile.component.html'
+            templateUrl: 'app/profile.component.html',
+            pipes: [i18n_pipe_1.Translate]
         }), 
         __metadata('design:paramtypes', [game_service_1.GameService, router_1.Router])
     ], ProfileComponent);

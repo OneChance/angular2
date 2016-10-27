@@ -3,10 +3,12 @@ import { GameService } from './game.service';
 import { Router } from '@angular/router';
 import { Account } from './entity/account';
 import { Message } from './entity/message';
+import { Translate } from './tool/i18n.pipe';
 
 @Component({
 	selector:'my-app',
-	templateUrl:'app/profile.component.html'
+	templateUrl:'app/profile.component.html',
+	pipes: [Translate]
 })
 
 export class ProfileComponent{
