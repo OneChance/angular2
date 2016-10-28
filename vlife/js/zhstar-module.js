@@ -1,29 +1,11 @@
 (function() {
 	'use strict';
 	var UTIL = {
-		ajax : {},
 		format:{},
 		time:{}
 	};
 	
 	window.UTIL = UTIL;
-	
-	UTIL.ajax.go = function(url,goType,data,success,error){
-		$.ajax({
-            url: url,
-            type: goType,
-            data: data,
-            cache: false,
-            dataType:"json",
-            success:success,
-            error: function() {
-            	VLIFE.game.showMsg(server_error_msg);
-            	if(error){
-            		(error)();
-            	}       	
-            }
-        });
-	};
 	
 	UTIL.format.time = function(value){
 		if(value<10){

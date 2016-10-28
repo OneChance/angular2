@@ -1,7 +1,5 @@
 import { Component,trigger,state,style,transition,animate,keyframes } from '@angular/core';
 import { ROUTER_DIRECTIVES} from '@angular/router';
-import { LoginComponent } from './login.component';
-import { ProfileComponent } from './profile.component';
 import { GameService } from './game.service';
 import { Message } from './entity/message';
 import { Translate } from './tool/i18n.pipe';
@@ -11,7 +9,6 @@ import { Translate } from './tool/i18n.pipe';
 	templateUrl:'app/app.component.html',
 	directives:[ROUTER_DIRECTIVES],
 	providers:[GameService],
-	precompile:[LoginComponent,ProfileComponent],
 	animations:[
 		trigger('msgState',[
 			transition('void => *', [animate('500ms ease-in', keyframes([style({opacity: 0, transform: 'translateX(-100%)', offset: 0}),
@@ -24,7 +21,7 @@ import { Translate } from './tool/i18n.pipe';
 														 ]))])
 		])
 	],
-	pipes: [Translate]	
+	pipes: [Translate]
 })
 
 export class AppComponent{

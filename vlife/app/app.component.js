@@ -10,8 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var login_component_1 = require('./login.component');
-var profile_component_1 = require('./profile.component');
 var game_service_1 = require('./game.service');
 var i18n_pipe_1 = require('./tool/i18n.pipe');
 var AppComponent = (function () {
@@ -35,7 +33,6 @@ var AppComponent = (function () {
             templateUrl: 'app/app.component.html',
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [game_service_1.GameService],
-            precompile: [login_component_1.LoginComponent, profile_component_1.ProfileComponent],
             animations: [
                 core_1.trigger('msgState', [
                     core_1.transition('void => *', [core_1.animate('500ms ease-in', core_1.keyframes([core_1.style({ opacity: 0, transform: 'translateX(-100%)', offset: 0 }),
