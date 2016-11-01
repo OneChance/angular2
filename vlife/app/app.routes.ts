@@ -1,6 +1,7 @@
 import { provideRouter,RouterConfig } from '@angular/router';
-import { LoginComponent } from './login.component';
-import { ProfileComponent } from './profile.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './login/profile.component';
+import { PropertyComponent } from './login/property.component';
 
 const routes:RouterConfig = [
 	{
@@ -15,6 +16,10 @@ const routes:RouterConfig = [
 	{
 		path:'profile',
 		component:ProfileComponent
+	},
+	{
+		path:'property',
+		component:PropertyComponent
 	}
 ];
 

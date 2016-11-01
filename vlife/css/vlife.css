@@ -64,10 +64,19 @@ header {
 .title-pacehold {
 	margin-top: 125px;
 }
-header .container {
-	padding-top: 100px;
-	padding-bottom: 226px;
+
+.reincarnate-button{
+	margin-top: 50px;
 }
+
+.page-container{
+	margin-top: 10%;
+}
+
+.page-container h1,h2,h3,p{
+	text-align: center;
+}
+
 header img {
 	display: block;
 	margin: 0 auto 20px;
@@ -83,12 +92,13 @@ header .intro-text .skills {
 	font-size: 1.25em;
 	font-weight: 300;
 }
+header .container {
+	padding-top: 220px;
+	padding-bottom: 235px;
+}
 @media (min-width:768px) {
 	.title-pacehold {
 		margin-top: 110px;
-	}
-	header .container {
-		padding-top: 150px;
 	}
 	header .intro-text .name {
 		font-size: 2.75em;
@@ -96,8 +106,10 @@ header .intro-text .skills {
 	header .intro-text .skills {
 		font-size: 1.75em;
 	}
-}
-@media (min-width:768px) {
+	header .container {
+		padding-top: 214px;
+		padding-bottom: 226px;
+	}
 	.navbar-fixed-top {
 		padding: 25px 0;
 		-webkit-transition: padding .3s;

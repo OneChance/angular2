@@ -1,14 +1,14 @@
 import { Component,trigger,state,style,transition,animate,keyframes } from '@angular/core';
 import { ROUTER_DIRECTIVES} from '@angular/router';
-import { GameService } from './game.service';
 import { Message } from './entity/message';
 import { Translate } from './tool/i18n.pipe';
+import { AppService } from './app.service';
 
 @Component({
 	selector:'app',
 	templateUrl:'app/app.component.html',
 	directives:[ROUTER_DIRECTIVES],
-	providers:[GameService],
+	providers:[AppService],
 	animations:[
 		trigger('msgState',[
 			transition('void => *', [animate('500ms ease-in', keyframes([style({opacity: 0, transform: 'translateX(-100%)', offset: 0}),
@@ -27,8 +27,8 @@ import { Translate } from './tool/i18n.pipe';
 export class AppComponent{
 	msg:Message;
 
-	constructor(private gameService:GameService){
-		gameService.msgReceived$.subscribe(msg=>this.setMsg(msg));	                
+	constructor(private appService:AppService){
+		appService.msgReceived$.subscribe(msg=>this.setMsg(msg));	                
 	}
 
 	setMsg(msg:Message){

@@ -30,7 +30,7 @@
 			<div class="col-lg-12">
 				<p class="page-scroll">
 					<img class="img-responsive"
-								src="{{profileImg}}" alt="" style="cursor: pointer;" (click)="info()"></p>
+								src="{{profileImg}}" alt="" style="cursor: pointer;" (click)="property()"></p>
 				<div class="intro-text">
 					<span class="name">{{account?.name}}</span>
 					<hr class="star-light">
@@ -58,8 +58,8 @@
 							</div>
 						</div>
 
-						<div id="reincarnateButton" class="col-xs-12" *ngIf="account?.remainTime==0">
-							<a class="btn btn-primary btn-lg portfolio-link">{{"lifecomplete"}}</a>
+						<div id="reincarnateButton" class="col-xs-12 reincarnate-button" *ngIf="account?.remainTime==0">
+							<a class="btn btn-primary btn-lg portfolio-link">{{"to_reincarnate" | translate}}</a>
 						</div>
 					</span>
 				</div>

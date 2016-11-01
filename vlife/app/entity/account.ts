@@ -11,4 +11,8 @@ export class Account{
 	public level:number;
 	public species:Species;
 	public remainTime:number;
+	public soul:number;
+	public exp:number;
+	public hp:number;
+	public addHp:number;
 }

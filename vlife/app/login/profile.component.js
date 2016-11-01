@@ -8,27 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/// <reference path="../typings/jquery/jquery.d.ts" />
+/// <reference path="../../typings/jquery/jquery.d.ts" />
 var core_1 = require('@angular/core');
-var game_service_1 = require('./game.service');
 var router_1 = require('@angular/router');
-var i18n_pipe_1 = require('./tool/i18n.pipe');
+var i18n_pipe_1 = require('../tool/i18n.pipe');
+var login_service_1 = require('./login.service');
 var ProfileComponent = (function () {
-    function ProfileComponent(gameService, router, el) {
+    function ProfileComponent(loginService, router, el) {
         var _this = this;
-        this.gameService = gameService;
+        this.loginService = loginService;
         this.router = router;
         this.el = el;
         this.lifeComplete = false;
         this.profileImg = "images/profile.png";
-        this.gameService.getLoginAccount().then(function (account) { return _this.checkAccount(account); });
+        this.loginService.getLoginAccount().then(function (account) { return _this.checkAccount(account); });
     }
-    ProfileComponent.prototype.info = function () {
-        alert('detail');
+    ProfileComponent.prototype.property = function () {
+        var link = ['/property'];
+        this.router.navigate(link);
     };
     ProfileComponent.prototype.signOut = function () {
         var _this = this;
-        this.gameService.loginOut().then(function () { return _this.loginOut(); });
+        this.loginService.loginOut().then(function () { return _this.loginOut(); });
     };
     ProfileComponent.prototype.loginOut = function () {
         var link = ['/login'];
@@ -58,7 +59,7 @@ var ProfileComponent = (function () {
                         break;
                     case "finished":
                         $this.hide();
-                        //jQuery("#reincarnateButton").show();
+                        this.lifeComplete = true;
                         break;
                 }
             });
@@ -67,10 +68,11 @@ var ProfileComponent = (function () {
     ProfileComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            templateUrl: 'app/profile.component.html',
-            pipes: [i18n_pipe_1.Translate]
+            templateUrl: 'app/login/profile.component.html',
+            pipes: [i18n_pipe_1.Translate],
+            providers: [login_service_1.LoginService]
         }), 
-        __metadata('design:paramtypes', [game_service_1.GameService, router_1.Router, core_1.ElementRef])
+        __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router, core_1.ElementRef])
     ], ProfileComponent);
     return ProfileComponent;
 }());

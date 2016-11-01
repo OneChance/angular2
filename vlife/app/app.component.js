@@ -10,13 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var game_service_1 = require('./game.service');
 var i18n_pipe_1 = require('./tool/i18n.pipe');
+var app_service_1 = require('./app.service');
 var AppComponent = (function () {
-    function AppComponent(gameService) {
+    function AppComponent(appService) {
         var _this = this;
-        this.gameService = gameService;
-        gameService.msgReceived$.subscribe(function (msg) { return _this.setMsg(msg); });
+        this.appService = appService;
+        appService.msgReceived$.subscribe(function (msg) { return _this.setMsg(msg); });
     }
     AppComponent.prototype.setMsg = function (msg) {
         this.msg = msg;
@@ -32,7 +32,7 @@ var AppComponent = (function () {
             selector: 'app',
             templateUrl: 'app/app.component.html',
             directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [game_service_1.GameService],
+            providers: [app_service_1.AppService],
             animations: [
                 core_1.trigger('msgState', [
                     core_1.transition('void => *', [core_1.animate('500ms ease-in', core_1.keyframes([core_1.style({ opacity: 0, transform: 'translateX(-100%)', offset: 0 }),
@@ -47,7 +47,7 @@ var AppComponent = (function () {
             ],
             pipes: [i18n_pipe_1.Translate]
         }), 
-        __metadata('design:paramtypes', [game_service_1.GameService])
+        __metadata('design:paramtypes', [app_service_1.AppService])
     ], AppComponent);
     return AppComponent;
 }());

@@ -87,6 +87,10 @@ var lang = {
     "second": {
         "zh-CN": "秒",
         "en-US": "Second"
+    },
+    "to_reincarnate": {
+        "zh-CN": "转生",
+        "en-US": "To Reincarnate"
     }
 };
 exports.lang = lang;

@@ -13,8 +13,8 @@ var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var Subject_1 = require('rxjs/Subject');
 var message_1 = require('./entity/message');
-var GameService = (function () {
-    function GameService(http) {
+var AppService = (function () {
+    function AppService(http) {
         this.http = http;
         this.baseUrl = 'http://localhost:8080';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json;charset=UTF-8' });
@@ -28,30 +28,26 @@ var GameService = (function () {
             this.lang = navigator.language;
         }
     }
-    GameService.prototype.receiveMsg = function (msg) {
+    AppService.prototype.receiveMsg = function (msg) {
         this.msgReceivedSource.next(msg);
     };
-    GameService.prototype.getLoginAccount = function () {
+    AppService.prototype.getData = function (url, withCredentials) {
         var _this = this;
-        return this.http.get(this.baseUrl + '/getLoginAccount', { withCredentials: true }).toPromise().then(function (response) { return response.json(); }, function (error) { return _this.serverError(); });
+        return this.http.get(this.baseUrl + '/' + url, { withCredentials: withCredentials }).toPromise().then(function (response) { return response.json(); }, function (error) { return _this.serverError(); });
     };
-    GameService.prototype.login = function (account) {
+    AppService.prototype.postData = function (url, data) {
         var _this = this;
-        return this.http.post(this.baseUrl + '/login', JSON.stringify(account), { headers: this.headers }).toPromise().then(function (res) { return res.json(); }, function (error) { return _this.serverError(); });
+        return this.http.post(this.baseUrl + '/login', JSON.stringify(data), { headers: this.headers }).toPromise().then(function (res) { return res.json(); }, function (error) { return _this.serverError(); });
     };
-    GameService.prototype.loginOut = function () {
-        var _this = this;
-        return this.http.post(this.baseUrl + '/loginOut', {}, { headers: this.headers }).toPromise().then(function () { }, function (error) { return _this.serverError(); });
-    };
-    GameService.prototype.serverError = function () {
+    AppService.prototype.serverError = function () {
         this.receiveMsg(new message_1.Message("danger", "serverError", true));
         return Promise.reject('server-error');
     };
-    GameService = __decorate([
+    AppService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], GameService);
-    return GameService;
+    ], AppService);
+    return AppService;
 }());
-exports.GameService = GameService;
-//# sourceMappingURL=game.service.js.map
+exports.AppService = AppService;
+//# sourceMappingURL=app.service.js.map

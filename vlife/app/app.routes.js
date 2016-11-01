@@ -1,7 +1,8 @@
 "use strict";
 var router_1 = require('@angular/router');
-var login_component_1 = require('./login.component');
-var profile_component_1 = require('./profile.component');
+var login_component_1 = require('./login/login.component');
+var profile_component_1 = require('./login/profile.component');
+var property_component_1 = require('./login/property.component');
 var routes = [
     {
         path: '',
@@ -15,6 +16,10 @@ var routes = [
     {
         path: 'profile',
         component: profile_component_1.ProfileComponent
+    },
+    {
+        path: 'property',
+        component: property_component_1.PropertyComponent
     }
 ];
 exports.appRouterProviders = [

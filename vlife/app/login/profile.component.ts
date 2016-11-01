@@ -1,17 +1,17 @@
-/// <reference path="../typings/jquery/jquery.d.ts" />
+/// <reference path="../../typings/jquery/jquery.d.ts" />
 import { Component,ElementRef,Inject} from '@angular/core';
-import { GameService } from './game.service';
 import { Router } from '@angular/router';
-import { Account } from './entity/account';
-import { Message } from './entity/message';
-import { Translate } from './tool/i18n.pipe';
+import { Account } from '../entity/account';
+import { Translate } from '../tool/i18n.pipe';
+import { LoginService } from './login.service';
 
 declare var jQuery:JQueryStatic;
 
 @Component({
 	selector:'my-app',
-	templateUrl:'app/profile.component.html',
-	pipes: [Translate]
+	templateUrl:'app/login/profile.component.html',
+	pipes: [Translate],
+	providers:[LoginService]
 })
 
 export class ProfileComponent{
@@ -20,16 +20,17 @@ export class ProfileComponent{
 	lifeComplete:boolean = false;
 	profileImg:string="images/profile.png";
 
-	constructor(private gameService:GameService,private router:Router,private el:ElementRef){
-		this.gameService.getLoginAccount().then(account=>this.checkAccount(account));
+	constructor(private loginService:LoginService,private router:Router,private el:ElementRef){
+		this.loginService.getLoginAccount().then(account=>this.checkAccount(account));
 	}
 
-	info(){
-		alert('detail');
+	property(){
+		let link = ['/property'];
+		this.router.navigate(link);
 	}
 
 	signOut(){
-		this.gameService.loginOut().then(()=>this.loginOut())
+		this.loginService.loginOut().then(()=>this.loginOut())
 	}
 
 	loginOut(){
@@ -62,7 +63,7 @@ export class ProfileComponent{
 	                    break;
 	                case "finished":
 	                    $this.hide();
-	                    //jQuery("#reincarnateButton").show();
+	                    this.lifeComplete = true;
 	                    break;
 	            }
 	        });

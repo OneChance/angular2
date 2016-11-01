@@ -9,14 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var account_1 = require('./entity/account');
-var game_service_1 = require('./game.service');
+var account_1 = require('../entity/account');
+var app_service_1 = require('../app.service');
 var router_1 = require('@angular/router');
-var message_1 = require('./entity/message');
-var i18n_pipe_1 = require('./tool/i18n.pipe');
+var message_1 = require('../entity/message');
+var i18n_pipe_1 = require('../tool/i18n.pipe');
+var login_service_1 = require('./login.service');
 var LoginComponent = (function () {
-    function LoginComponent(gameService, router) {
-        this.gameService = gameService;
+    function LoginComponent(appService, loginService, router) {
+        this.appService = appService;
+        this.loginService = loginService;
         this.router = router;
         this.model = new account_1.Account();
         this.submiting = false;
@@ -25,7 +27,7 @@ var LoginComponent = (function () {
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;
         this.submiting = true;
-        this.gameService.login(this.model).then(function (account) { return _this.loginRes(account); }, function (error) { return _this.submiting = false; });
+        this.loginService.login(this.model).then(function (account) { return _this.loginRes(account); }, function (error) { return _this.submiting = false; });
     };
     LoginComponent.prototype.ngAfterViewInit = function () {
     };
@@ -37,7 +39,7 @@ var LoginComponent = (function () {
             }
             else {
                 this.submiting = false;
-                this.gameService.receiveMsg(new message_1.Message("danger", account.msg, true));
+                this.appService.receiveMsg(new message_1.Message("danger", account.msg, true));
             }
         }
     };
@@ -48,10 +50,11 @@ var LoginComponent = (function () {
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login-form',
-            templateUrl: 'app/login.component.html',
-            pipes: [i18n_pipe_1.Translate]
+            templateUrl: 'app/login/login.component.html',
+            pipes: [i18n_pipe_1.Translate],
+            providers: [login_service_1.LoginService]
         }), 
-        __metadata('design:paramtypes', [game_service_1.GameService, router_1.Router])
+        __metadata('design:paramtypes', [app_service_1.AppService, login_service_1.LoginService, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
 }());
