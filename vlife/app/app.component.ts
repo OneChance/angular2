@@ -3,6 +3,7 @@ import { ROUTER_DIRECTIVES} from '@angular/router';
 import { Message } from './entity/message';
 import { Translate } from './tool/i18n.pipe';
 import { AppService } from './app.service';
+import { PropertyComponent } from './login/property.component'; 
 
 @Component({
 	selector:'app',
@@ -21,7 +22,8 @@ import { AppService } from './app.service';
 														 ]))])
 		])
 	],
-	pipes: [Translate]
+	pipes: [Translate],
+	precompile:[PropertyComponent]
 })
 
 export class AppComponent{

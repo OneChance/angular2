@@ -13,7 +13,6 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var i18n_pipe_1 = require('../tool/i18n.pipe');
 var login_service_1 = require('./login.service');
-var property_operator_component_1 = require('./property-operator.component');
 var PropertyComponent = (function () {
     function PropertyComponent(loginService, router, el) {
         var _this = this;
@@ -33,14 +32,14 @@ var PropertyComponent = (function () {
     };
     PropertyComponent = __decorate([
         core_1.Component({
+            selector: 'my-app',
             templateUrl: 'app/login/property.component.html',
             pipes: [i18n_pipe_1.Translate],
-            providers: [login_service_1.LoginService],
-            directives: [property_operator_component_1.PropertyOperatorComponent]
+            providers: [login_service_1.LoginService]
         }), 
         __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router, core_1.ElementRef])
     ], PropertyComponent);
     return PropertyComponent;
 }());
 exports.PropertyComponent = PropertyComponent;
-//# sourceMappingURL=property.component.js.map
+//# sourceMappingURL=property.component - 副本.js.map

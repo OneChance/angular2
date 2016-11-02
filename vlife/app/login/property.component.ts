@@ -5,14 +5,15 @@ import { Account } from '../entity/account';
 import { Message } from '../entity/message';
 import { Translate } from '../tool/i18n.pipe';
 import { LoginService } from './login.service';
+import { PropertyOperatorComponent } from './property-operator.component';
 
 declare var jQuery:JQueryStatic;
 
 @Component({
-	selector:'my-app',
 	templateUrl:'app/login/property.component.html',
 	pipes: [Translate],
-	providers:[LoginService]
+	providers:[LoginService],
+	directives:[PropertyOperatorComponent]
 })
 
 export class PropertyComponent{

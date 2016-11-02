@@ -15,4 +15,8 @@ export class Account{
 	public exp:number;
 	public hp:number;
 	public addHp:number;
+	public addPow:number;
+	public addDef:number;
+	public addDex:number;
+	public addInt:number;
 }

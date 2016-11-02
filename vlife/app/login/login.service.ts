@@ -3,7 +3,6 @@ import { Http,Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Account} from '../entity/account'
 import { Subject } from 'rxjs/Subject';
-import { Message } from '../entity/message';
 import { AppService } from '../app.service';
 
 @Injectable()

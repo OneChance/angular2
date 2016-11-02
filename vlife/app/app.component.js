@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var i18n_pipe_1 = require('./tool/i18n.pipe');
 var app_service_1 = require('./app.service');
+var property_component_1 = require('./login/property.component');
 var AppComponent = (function () {
     function AppComponent(appService) {
         var _this = this;
@@ -45,7 +46,8 @@ var AppComponent = (function () {
                         ]))])
                 ])
             ],
-            pipes: [i18n_pipe_1.Translate]
+            pipes: [i18n_pipe_1.Translate],
+            precompile: [property_component_1.PropertyComponent]
         }), 
         __metadata('design:paramtypes', [app_service_1.AppService])
     ], AppComponent);

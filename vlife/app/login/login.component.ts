@@ -8,7 +8,6 @@ import { Translate } from '../tool/i18n.pipe';
 import { LoginService } from './login.service';
 
 @Component({
-	selector:'login-form',
 	templateUrl:'app/login/login.component.html',
 	pipes: [Translate],
 	providers:[LoginService]

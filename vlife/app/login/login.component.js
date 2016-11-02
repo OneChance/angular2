@@ -49,7 +49,6 @@ var LoginComponent = (function () {
     };
     LoginComponent = __decorate([
         core_1.Component({
-            selector: 'login-form',
             templateUrl: 'app/login/login.component.html',
             pipes: [i18n_pipe_1.Translate],
             providers: [login_service_1.LoginService]

@@ -8,97 +8,107 @@
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2">
 				<div class="modal-body">
-					<h2>property</h2>
+					<h2>{{ "property" | translate }}</h2>
 					<hr class="star-primary">
 
-					<h3>
-						soul
-						:
-						{{account?.soul}}
-					</h3>
-
-					<p>
-						species
-						:
-						{{account?.species?.name}}
-					</p>
-					<p>
-						level
-						:{{account?.level}}
-					</p>
-					<p>
-						exp
-						:{{account?.exp}}
-					</p>
+					<table class="table table-striped property-table">
+						<tbody>
+							<tr>
+								<td>{{ "soul" | translate }}:</td>
+								<td style="text-align:left">{{account?.soul}}</td>
+							</tr>
+							<tr>
+								<td>{{ "species" | translate }}:</td>
+								<td style="text-align:left">{{ account?.species?.name | translate }}</td>
+							</tr>
+							<tr>
+								<td>{{ "level" | translate }}:</td>
+								<td style="text-align:left">{{account?.level}}</td>
+							</tr>
+							<tr>
+								<td>{{ "exp" | translate }}:</td>
+								<td style="text-align:left">{{account?.exp}}</td>
+							</tr>
+						</tbody>
+					</table>
 
 					<div class="progress property-prograss">
-						<div class="process-font"> <i class="fa fa-heart"></i>
-							{{account?.hp}}/{{account?.addHp+account?.species?.baseHp}}
+						<div class="process-font"> <i class="fa fa-heart"></i> {{account?.hp}}/{{account?.addHp+account?.species?.baseHp}}
 						</div>
-						<div class="progress-bar progress-bar-danger" role="progressbar"
-							aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-							style="width: {{account?.hp*100/(account?.species?.baseHp+account?.addHp)}}%;"></div>
+						<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+							[style.width.%]="account?.hp/(account?.addHp+account?.species?.baseHp)*100"></div>
 					</div>
 
 					<div class="progress property-prograss">
-						<div class="process-font"> <i class="fa fa-bed"></i>
-							{{account?.vigor}}/100
+						<div class="process-font"> <i class="fa fa-bed"></i> {{account?.vigor}}/100
 						</div>
-						<div class="progress-bar progress-bar-success" role="progressbar"
-							aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-							style="width: ${vigorPercent}%;"></div>
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+							[style.width.%]="account?.vigor"></div>
 					</div>
 
 					<div class="progress property-prograss">
 						<div class="process-font">
-							<i class="fa fa-cutlery"></i>
-							{{account?.satiety}}/100
+							<i class="fa fa-cutlery"></i> {{account?.satiety}}/100
 						</div>
-						<div class="progress-bar progress-bar-warning" role="progressbar"
-							aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-							style="width: ${satietyPercent}%;"></div>
+						<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+							[style.width.%]="account?.satiety"></div>
 					</div>
 
 					<table class="table table-striped property-table">
 						<tbody>
-							<tr prop="power">
+							<tr>
 								<td>power</td>
 								<td>
-									{{account?.basePow}}(
+									{{account?.species?.basePow + account?.addPow }}(
 									<addp>+{{account?.addPow}}</addp>
 									)
 								</td>
+								<td>
+									<propoperator [operateObj]="'power'" [account]="account"></propoperator>
+								</td>
 							</tr>
-							<tr prop="def">
+							<tr>
 								<td>def</td>
 								<td>
-									{{account?.baseDef}}(
+									{{account?.species?.baseDef + account?.addDef }}(
 									<addp>+{{account?.addDef}}</addp>
 									)
 								</td>
+								<td>
+									<propoperator [operateObj]="'def'" [account]="account"></propoperator>
+								</td>
 							</tr>
-							<tr prop="dex">
+							<tr>
 								<td>dex</td>
 								<td>
-									{{account?.baseDex}}(
+									{{account?.species?.baseDex + account?.addDex }}(
 									<addp>+{{account?.addDex}}</addp>
 									)
 								</td>
+								<td>
+									<propoperator [operateObj]="'dex'" [account]="account"></propoperator>
+								</td>
 							</tr>
-							<tr prop="inte">
+							<tr>
 								<td>inte</td>
 								<td>
-									{{account?.baseInt}}(
+									{{account?.species?.baseInt + account?.addInt }}(
 									<addp>+{{account?.addInt}}</addp>
 									)
 								</td>
+								<td>
+									<propoperator [operateObj]="'inte'" [account]="account"></propoperator>
+								</td>
 							</tr>
-							<tr prop="hp">
+							<tr>
 								<td>hp</td>
 								<td>
-									{{account?.baseHp}}(
+									{{ account?.species?.baseHp + account?.addHp }}(
 									<addp>+{{account?.addHp}}</addp>
 									)
+								</td>
+								<td>
+									<propoperator [operateObj]="'hp'" [account]="account"></propoperator>
 								</td>
 							</tr>
 						</tbody>
@@ -109,7 +119,7 @@
 						<i class="fa fa-edit"></i>
 						changeproperty
 					</button>
-					<p *ngIf="account?.remainTime<=(24 * 60 * 60 * 1000)">cannotchangefromtime</p>
+					<h3 *ngIf="account?.remainTime<=(24 * 60 * 60 * 1000)">cannotchangefromtime</h3>
 				</div>
 			</div>
 		</div>

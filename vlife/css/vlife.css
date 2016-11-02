@@ -19,8 +19,9 @@ a, a:hover, a:focus, a:active, a.active {
 }
 h1, h2, h3, h4, h5, h6 {
 	text-transform: uppercase;
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 	font-weight: 700;
+	text-align: center;
 }
 hr.star-light, hr.star-primary {
 	margin: 25px auto 30px;
@@ -84,7 +85,7 @@ header img {
 header .intro-text .name {
 	display: block;
 	text-transform: uppercase;
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 	font-size: 2em;
 	font-weight: 700;
 }
@@ -131,7 +132,7 @@ header .container {
 }
 .navbar {
 	text-transform: uppercase;
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 	font-weight: 700;
 }
 .navbar a:focus {
@@ -404,15 +405,21 @@ footer .footer-below {
 }
 .property-table td {
 	vertical-align: middle !important;
+	text-transform: uppercase;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    font-weight: 900;
+    text-align: right;
+    font-size: 13px;
 }
+
 .property-btn {
-	padding: 1px 4px 1px 6px;
+	padding: 2px 3px 1px 3px;
 	font-size: 13px;
+	height: 30px;
+	width: 30px;
 }
 addp {
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: green;
-	font-weight: bold;
 }
 .info-container {
 	padding-top: 8px;
@@ -428,7 +435,7 @@ addp {
 .process-font {
 	position: absolute;
 	color: #fff;
-	width: 50%;
+	width: 46%;
 	text-align: center;
 	margin-top: 5px;
 }
@@ -515,9 +522,7 @@ addp {
 	opacity: .20;
 	filter: alpha(opacity = 20);
 }
-.fa {
-	margin-right: 3px;
-}
+
 .global_msg {
 	z-index: 3000;
 	position: fixed;

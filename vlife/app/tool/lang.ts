@@ -90,6 +90,34 @@ var lang = {
     "to_reincarnate":{
         "zh-CN": "转生",
         "en-US": "To Reincarnate"
+    },
+    "not_enough_soul":{
+        "zh-CN": "魂值不足",
+        "en-US": "Not enough soul"
+    },
+    "property":{
+        "zh-CN": "属性",
+        "en-US": "Property"
+    },
+    "soul":{
+        "zh-CN": "魂值",
+        "en-US": "soul"
+    },
+    "species":{
+        "zh-CN": "物种",
+        "en-US": "species"
+    },
+    "fish":{
+        "zh-CN": "鱼",
+        "en-US": "fish"
+    },
+    "level":{
+        "zh-CN": "等级",
+        "en-US": "level"
+    },
+    "exp":{
+        "zh-CN": "经验",
+        "en-US": "exp"
     }
 };
 
