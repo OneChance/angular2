@@ -4,15 +4,15 @@ var lang = {
         "zh-CN": "登陆",
         "en-US": "Login"
     },
-    "Reincarnate": {
+    "reincarnate": {
         "zh-CN": "轮回",
         "en-US": "Reincarnate"
     },
-    "BackToLife": {
+    "back_to_life": {
         "zh-CN": "回到现实世界",
         "en-US": "Back To Life"
     },
-    "reincarnateDoor": {
+    "reincarnate_door": {
         "zh-CN": "轮回之门",
         "en-US": "Reincarnate Door"
     },
@@ -36,15 +36,15 @@ var lang = {
         "zh-CN": "名字",
         "en-US": "Password"
     },
-    "needAccount": {
+    "need_account": {
         "zh-CN": "请出示你的通行证",
         "en-US": "Please Enter Account"
     },
-    "needPassword": {
+    "need_password": {
         "zh-CN": "请给我看看你的密钥",
         "en-US": "Please Enter Password"
     },
-    "needName": {
+    "need_name": {
         "zh-CN": "请告诉我你的名字",
         "en-US": "Please Enter Your Name"
     },
@@ -60,15 +60,15 @@ var lang = {
         "zh-CN": "进入",
         "en-US": "Enter"
     },
-    "serverError": {
+    "server_error": {
         "zh-CN": "服务器异常",
         "en-US": "Server Error"
     },
-    "accounterror": {
+    "account_error": {
         "zh-CN": "通行证错误",
         "en-US": "Account Error"
     },
-    "accountexist": {
+    "account_exist": {
         "zh-CN": "无效的通行证",
         "en-US": "Invalid Account"
     },
@@ -119,6 +119,58 @@ var lang = {
     "exp": {
         "zh-CN": "经验",
         "en-US": "exp"
+    },
+    "power": {
+        "zh-CN": "力量",
+        "en-US": "power"
+    },
+    "def": {
+        "zh-CN": "防御",
+        "en-US": "def"
+    },
+    "dex": {
+        "zh-CN": "敏捷",
+        "en-US": "def"
+    },
+    "inte": {
+        "zh-CN": "智力",
+        "en-US": "def"
+    },
+    "hp": {
+        "zh-CN": "生命",
+        "en-US": "def"
+    },
+    "vigor": {
+        "zh-CN": "活力",
+        "en-US": "def"
+    },
+    "satiety": {
+        "zh-CN": "饱食度",
+        "en-US": "satiety"
+    },
+    "exceeded_deadline": {
+        "zh-CN": "时限已过,无法再调整属性",
+        "en-US": "It has been exceeded the specified deadline,You can not change your property"
+    },
+    "change_property": {
+        "zh-CN": "调整",
+        "en-US": "Change"
+    },
+    "change_success": {
+        "zh-CN": "调整完成",
+        "en-US": "Change Success"
+    },
+    "change_error": {
+        "zh-CN": "调整失败",
+        "en-US": "Change Fail"
+    },
+    "data_error": {
+        "zh-CN": "数据错误",
+        "en-US": "Data Error"
+    },
+    "account_invalid": {
+        "zh-CN": "通行证失效",
+        "en-US": "Account Invalid"
     }
 };
 exports.lang = lang;

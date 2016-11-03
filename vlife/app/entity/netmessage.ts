@@ -1,4 +1,4 @@
-export class Message{
+export class NetMessage{
 	public type:string;
 	public content:string;
 	public autoClose:boolean;

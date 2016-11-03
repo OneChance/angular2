@@ -12,7 +12,7 @@ var core_1 = require('@angular/core');
 var account_1 = require('../entity/account');
 var app_service_1 = require('../app.service');
 var router_1 = require('@angular/router');
-var message_1 = require('../entity/message');
+var netmessage_1 = require('../entity/netmessage');
 var i18n_pipe_1 = require('../tool/i18n.pipe');
 var login_service_1 = require('./login.service');
 var LoginComponent = (function () {
@@ -31,16 +31,14 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.ngAfterViewInit = function () {
     };
-    LoginComponent.prototype.loginRes = function (account) {
-        if (account) {
-            if (!account.msg) {
-                var link = ['/profile'];
-                this.router.navigate(link);
-            }
-            else {
-                this.submiting = false;
-                this.appService.receiveMsg(new message_1.Message("danger", account.msg, true));
-            }
+    LoginComponent.prototype.loginRes = function (netMessage) {
+        if (!netMessage.content) {
+            var link = ['/profile'];
+            this.router.navigate(link);
+        }
+        else {
+            this.submiting = false;
+            this.appService.receiveMsg(new netmessage_1.NetMessage(netMessage.type, netMessage.content, true));
         }
     };
     LoginComponent.prototype.changeLang = function (lang) {

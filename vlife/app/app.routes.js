@@ -1,8 +1,8 @@
 "use strict";
 var router_1 = require('@angular/router');
 var login_component_1 = require('./login/login.component');
-var profile_component_1 = require('./login/profile.component');
-var property_component_1 = require('./login/property.component');
+var profile_component_1 = require('./role/profile.component');
+var property_component_1 = require('./role/property.component');
 var routes = [
     {
         path: '',

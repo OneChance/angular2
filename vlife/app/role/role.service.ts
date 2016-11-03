@@ -6,22 +6,13 @@ import { Subject } from 'rxjs/Subject';
 import { AppService } from '../app.service';
 
 @Injectable()
-export class LoginService{
+export class RoleService{
 
 	constructor(private appService:AppService){
 		
 	}
 
-	getLoginAccount():Promise<Account>{
-		return this.appService.getData('getLoginAccount',true);
+	changeProperty(account){
+		return this.appService.postData('changeProperty',account);
 	}
-
-	login(account){
-		return this.appService.postData('login',account);
-	}
-
-	loginOut(){
-		return this.appService.postData('loginOut',{});
-	}
-
 }

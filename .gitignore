@@ -50,3 +50,5 @@ Temporary Items
 # my
 node_modules/
 *.log
+*.map
+*.map

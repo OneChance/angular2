@@ -33,14 +33,16 @@
 					</table>
 
 					<div class="progress property-prograss">
-						<div class="process-font"> <i class="fa fa-heart"></i> {{account?.hp}}/{{account?.addHp+account?.species?.baseHp}}
+						<div class="process-font">
+							<h6>{{ "hp" | translate }}:{{account?.hp}}/{{account?.addHp+account?.species?.baseHp}}</h6>
 						</div>
 						<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
 							[style.width.%]="account?.hp/(account?.addHp+account?.species?.baseHp)*100"></div>
 					</div>
 
 					<div class="progress property-prograss">
-						<div class="process-font"> <i class="fa fa-bed"></i> {{account?.vigor}}/100
+						<div class="process-font">
+							<h6>{{ "vigor" | translate }}:{{account?.vigor}}/100</h6>
 						</div>
 						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
 							[style.width.%]="account?.vigor"></div>
@@ -48,7 +50,7 @@
 
 					<div class="progress property-prograss">
 						<div class="process-font">
-							<i class="fa fa-cutlery"></i> {{account?.satiety}}/100
+							<h6>{{ "satiety" | translate }}:{{account?.satiety}}/100</h6>
 						</div>
 						<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
 							[style.width.%]="account?.satiety"></div>
@@ -57,69 +59,69 @@
 					<table class="table table-striped property-table">
 						<tbody>
 							<tr>
-								<td>power</td>
+								<td>{{ "power" | translate }}</td>
 								<td>
 									{{account?.species?.basePow + account?.addPow }}(
 									<addp>+{{account?.addPow}}</addp>
 									)
 								</td>
 								<td>
-									<propoperator [operateObj]="'power'" [account]="account"></propoperator>
+									<propoperator [operateObj]="'addPow'" [account]="account"></propoperator>
 								</td>
 							</tr>
 							<tr>
-								<td>def</td>
+								<td>{{ "def" | translate }}</td>
 								<td>
 									{{account?.species?.baseDef + account?.addDef }}(
 									<addp>+{{account?.addDef}}</addp>
 									)
 								</td>
 								<td>
-									<propoperator [operateObj]="'def'" [account]="account"></propoperator>
+									<propoperator [operateObj]="'addDef'" [account]="account"></propoperator>
 								</td>
 							</tr>
 							<tr>
-								<td>dex</td>
+								<td>{{ "dex" | translate }}</td>
 								<td>
 									{{account?.species?.baseDex + account?.addDex }}(
 									<addp>+{{account?.addDex}}</addp>
 									)
 								</td>
 								<td>
-									<propoperator [operateObj]="'dex'" [account]="account"></propoperator>
+									<propoperator [operateObj]="'addDex'" [account]="account"></propoperator>
 								</td>
 							</tr>
 							<tr>
-								<td>inte</td>
+								<td>{{ "inte" | translate }}</td>
 								<td>
 									{{account?.species?.baseInt + account?.addInt }}(
 									<addp>+{{account?.addInt}}</addp>
 									)
 								</td>
 								<td>
-									<propoperator [operateObj]="'inte'" [account]="account"></propoperator>
+									<propoperator [operateObj]="'addInt'" [account]="account"></propoperator>
 								</td>
 							</tr>
 							<tr>
-								<td>hp</td>
+								<td>{{ "hp" | translate }}</td>
 								<td>
 									{{ account?.species?.baseHp + account?.addHp }}(
 									<addp>+{{account?.addHp}}</addp>
 									)
 								</td>
 								<td>
-									<propoperator [operateObj]="'hp'" [account]="account"></propoperator>
+									<propoperator [operateObj]="'addHp'" [account]="account"></propoperator>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 
 					<button type="button" class="btn btn-primary" *ngIf="account?.remainTime>
-						(24 * 60 * 60 * 1000)">
+						(24 * 60 * 60 * 1000)" (click)="changeProperty()">
 						<i class="fa fa-edit"></i>
-						changeproperty
+						{{ "change_property" | translate }}
 					</button>
-					<h3 *ngIf="account?.remainTime<=(24 * 60 * 60 * 1000)">cannotchangefromtime</h3>
+					<h4 *ngIf="account?.remainTime<=(24 * 60 * 60 * 1000)">{{ "exceeded_deadline" | translate }}</h4>
 				</div>
 			</div>
 		</div>

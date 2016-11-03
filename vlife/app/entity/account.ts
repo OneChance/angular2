@@ -1,6 +1,7 @@
 import { Species } from './species';
+import { NetMessage } from './netmessage';
 
-export class Account{
+export class Account extends NetMessage{
 	public id:number;
 	public enterType:string;
 	public account:string;
@@ -19,4 +20,8 @@ export class Account{
 	public addDef:number;
 	public addDex:number;
 	public addInt:number;
+
+	constructor(){
+		super("","",true);
+	}
 }

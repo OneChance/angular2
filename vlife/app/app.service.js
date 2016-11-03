@@ -12,10 +12,12 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var Subject_1 = require('rxjs/Subject');
-var message_1 = require('./entity/message');
+var netmessage_1 = require('./entity/netmessage');
+var router_1 = require('@angular/router');
 var AppService = (function () {
-    function AppService(http) {
+    function AppService(http, router) {
         this.http = http;
+        this.router = router;
         this.baseUrl = 'http://localhost:8080';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json;charset=UTF-8' });
         this.msgReceivedSource = new Subject_1.Subject();
@@ -28,24 +30,33 @@ var AppService = (function () {
             this.lang = navigator.language;
         }
     }
-    AppService.prototype.receiveMsg = function (msg) {
-        this.msgReceivedSource.next(msg);
+    AppService.prototype.receiveMsg = function (netMessage) {
+        this.msgReceivedSource.next(netMessage);
     };
     AppService.prototype.getData = function (url, withCredentials) {
         var _this = this;
-        return this.http.get(this.baseUrl + '/' + url, { withCredentials: withCredentials }).toPromise().then(function (response) { return response.json(); }, function (error) { return _this.serverError(); });
+        return this.http.get(this.baseUrl + '/' + url, { withCredentials: withCredentials }).toPromise().then(function (response) { return _this.check(response.json()); }, function (error) { return _this.serverError(); });
     };
     AppService.prototype.postData = function (url, data) {
         var _this = this;
-        return this.http.post(this.baseUrl + '/login', JSON.stringify(data), { headers: this.headers }).toPromise().then(function (res) { return res.json(); }, function (error) { return _this.serverError(); });
+        return this.http.post(this.baseUrl + '/' + url, JSON.stringify(data), { headers: this.headers }).toPromise().then(function (response) { return _this.check(response.json()); }, function (error) { return _this.serverError(); });
+    };
+    AppService.prototype.check = function (netMessage) {
+        if (netMessage.content == 'account_invalid') {
+            var link = ['/login'];
+            this.router.navigate(link);
+            this.receiveMsg(new netmessage_1.NetMessage(netMessage.type, netMessage.content, true));
+            netMessage.content = '';
+        }
+        return netMessage;
     };
     AppService.prototype.serverError = function () {
-        this.receiveMsg(new message_1.Message("danger", "serverError", true));
+        this.receiveMsg(new netmessage_1.NetMessage("danger", "server_error", true));
         return Promise.reject('server-error');
     };
     AppService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, router_1.Router])
     ], AppService);
     return AppService;
 }());

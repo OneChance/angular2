@@ -97,6 +97,11 @@ header .container {
 	padding-top: 220px;
 	padding-bottom: 235px;
 }
+
+.modal-body {
+	text-align: center;
+}
+
 @media (min-width:768px) {
 	.title-pacehold {
 		margin-top: 110px;
@@ -437,7 +442,7 @@ addp {
 	color: #fff;
 	width: 46%;
 	text-align: center;
-	margin-top: 5px;
+	margin-top: -2px;
 }
 .normal-table {
 	margin-top: 10px;

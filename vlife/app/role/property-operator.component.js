@@ -22,35 +22,9 @@ var PropertyOperatorComponent = (function () {
         configurable: true
     });
     PropertyOperatorComponent.prototype.add = function (num) {
-        var ableNum = 0;
-        switch (this._operateObj) {
-            case "power":
-                ableNum = this.getAbleNum(num, this.account.addPow);
-                this.account.addPow += ableNum;
-                break;
-            case "def":
-                ableNum = this.getAbleNum(num, this.account.addDef);
-                this.account.addDef += ableNum;
-                break;
-            case "dex":
-                ableNum = this.getAbleNum(num, this.account.addDex);
-                this.account.addDex += ableNum;
-                break;
-            case "inte":
-                ableNum = this.getAbleNum(num, this.account.addInt);
-                this.account.addInt += ableNum;
-                break;
-            case "hp":
-                ableNum = this.getAbleNum(num, this.account.addHp);
-                this.account.addHp += ableNum;
-                break;
-            default:
-                break;
-        }
+        var ableNum = Math.max(Math.min(this.account.soul, num), 0 - this.account[this._operateObj]);
+        this.account[this._operateObj] += ableNum;
         this.account.soul -= ableNum;
-    };
-    PropertyOperatorComponent.prototype.getAbleNum = function (addValue, propValue) {
-        return Math.max(Math.min(this.account.soul, addValue), 0 - propValue);
     };
     __decorate([
         core_1.Input(), 
@@ -64,7 +38,7 @@ var PropertyOperatorComponent = (function () {
     PropertyOperatorComponent = __decorate([
         core_1.Component({
             selector: 'propoperator',
-            templateUrl: 'app/login/property-operator.component.html'
+            templateUrl: 'app/role/property-operator.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], PropertyOperatorComponent);

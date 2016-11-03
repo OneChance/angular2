@@ -1,7 +1,7 @@
 import { provideRouter,RouterConfig } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './login/profile.component';
-import { PropertyComponent } from './login/property.component';
+import { ProfileComponent } from './role/profile.component';
+import { PropertyComponent } from './role/property.component';
 
 const routes:RouterConfig = [
 	{
