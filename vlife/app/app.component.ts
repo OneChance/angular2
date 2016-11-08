@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { PropertyComponent } from './role/property.component'; 
 import { LoginComponent } from './login/login.component'; 
 import { ProfileComponent } from './role/profile.component'; 
+import { ToReincarnateComponent } from './role/toreincarnate.component';
+import { RegionComponent } from './region/region.component';
 
 @Component({
 	selector:'app',
@@ -25,7 +27,8 @@ import { ProfileComponent } from './role/profile.component';
 		])
 	],
 	pipes: [Translate],
-	precompile:[PropertyComponent,LoginComponent,ProfileComponent]
+	precompile:[PropertyComponent,LoginComponent,ProfileComponent,
+				ToReincarnateComponent,RegionComponent]
 })
 
 export class AppComponent{

@@ -46,6 +46,9 @@ var PropertyComponent = (function () {
             this.appService.receiveMsg(new netmessage_1.NetMessage(netMessage.type, netMessage.content, true));
         }
     };
+    PropertyComponent.prototype.toProfile = function () {
+        this.appService.routeTo('/profile');
+    };
     PropertyComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/role/property.component.html',

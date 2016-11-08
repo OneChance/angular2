@@ -8,7 +8,6 @@ import { LoginService } from '../login/login.service';
 import { RoleService } from './role.service';
 import { AppService } from '../app.service';
 import { PropertyOperatorComponent } from './property-operator.component';
-import { NetObject } from '../entity/netobject';
 
 declare var jQuery:JQueryStatic;
 
@@ -45,5 +44,9 @@ export class PropertyComponent{
 		if(netMessage.content){
 			this.appService.receiveMsg(new NetMessage(netMessage.type,netMessage.content,true));			
 		}
+	}
+
+	toProfile(){
+		this.appService.routeTo('/profile');
 	}
 }

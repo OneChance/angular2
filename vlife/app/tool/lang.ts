@@ -111,6 +111,10 @@ var lang = {
         "zh-CN": "鱼",
         "en-US": "fish"
     },
+    "bird": {
+        "zh-CN": "鸟",
+        "en-US": "bird"
+    },
     "level": {
         "zh-CN": "等级",
         "en-US": "level"
@@ -170,8 +174,40 @@ var lang = {
     "account_invalid": {
         "zh-CN": "通行证失效",
         "en-US": "Account Invalid"
+    },
+    "life_time": {
+        "zh-CN": "修炼时间",
+        "en-US": "Day Of Life"
+    },
+    "soul_get": {
+        "zh-CN": "获得魂值",
+        "en-US": "Get Soul:"
+    },
+    "life_complete": {
+        "zh-CN": "修炼完成",
+        "en-US": "Life Complete:"
+    },
+    "life_complete_desc":{
+        "zh-CN": "你已完成今生的修炼,可以转世重生!",
+        "en-US": "You have your life completed,now you can reincarnate!"
+    },
+    "still_remain_time":{
+        "zh-CN": "还未完成修炼!",
+        "en-US": "Life does not completed!"
+    },
+    "reincarnate_completed":{
+        "zh-CN": "轮回已完成!",
+        "en-US": "Reincarnate Completed"
+    },
+    "region":{
+        "zh-CN": "区域",
+        "en-US": "Region"
+    },
+    "world":{
+        "zh-CN": "世界",
+        "en-US": "World"
     }
-    
+
 };
 
 export { lang }

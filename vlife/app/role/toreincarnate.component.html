@@ -1,0 +1,45 @@
+<div class="portfolio-modal">
+	<div class="close-modal" data-dismiss="modal" (click)="toProfile()">
+		<div class="lr">
+			<div class="rl"></div>
+		</div>
+	</div>
+	<div class="container page-container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				<div class="modal-body">
+					<h2>
+						{{ "life_complete" | translate }}
+					</h2>
+					<hr class="star-primary">
+					<img src="images/desc/lifecomplete.jpg" class="img-responsive img-centered" alt="">
+					<h3>
+						{{ "life_complete_desc" | translate }}
+					</h3>
+
+					<table class="table table-striped property-table">
+						<tbody>
+							<tr>
+								<td>{{ "species" | translate }}:</td>
+								<td style="text-align:left">{{ account?.species?.name | translate }}</td>
+							</tr>
+							<tr>
+								<td>{{ "life_time" | translate }}:</td>
+								<td style="text-align:left">{{account?.species?.lifeTime}}{{ "day" | translate }}</td>
+							</tr>
+							<tr>
+								<td>{{ "soul_get" | translate }}:</td>
+								<td style="text-align:left">{{account?.soulget}}</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<button type="button" class="btn btn-primary" (click)="reincarnate()">
+						<i class="fa fa-refresh"></i>
+						{{ "reincarnate" | translate }}
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -15,6 +15,8 @@ var app_service_1 = require('./app.service');
 var property_component_1 = require('./role/property.component');
 var login_component_1 = require('./login/login.component');
 var profile_component_1 = require('./role/profile.component');
+var toreincarnate_component_1 = require('./role/toreincarnate.component');
+var region_component_1 = require('./region/region.component');
 var AppComponent = (function () {
     function AppComponent(appService) {
         var _this = this;
@@ -49,7 +51,8 @@ var AppComponent = (function () {
                 ])
             ],
             pipes: [i18n_pipe_1.Translate],
-            precompile: [property_component_1.PropertyComponent, login_component_1.LoginComponent, profile_component_1.ProfileComponent]
+            precompile: [property_component_1.PropertyComponent, login_component_1.LoginComponent, profile_component_1.ProfileComponent,
+                toreincarnate_component_1.ToReincarnateComponent, region_component_1.RegionComponent]
         }), 
         __metadata('design:paramtypes', [app_service_1.AppService])
     ], AppComponent);

@@ -5,6 +5,8 @@ var NetMessage = (function () {
         this.content = content;
         this.autoClose = autoClose;
     }
+    NetMessage.DANGER = "danger";
+    NetMessage.SUCCESS = "success";
     return NetMessage;
 }());
 exports.NetMessage = NetMessage;

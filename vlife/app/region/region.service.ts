@@ -6,21 +6,14 @@ import { Subject } from 'rxjs/Subject';
 import { AppService } from '../app.service';
 
 @Injectable()
-export class RoleService{
+export class RegionService{
 
 	constructor(private appService:AppService){
 		
 	}
 
-	changeProperty(account){
-		return this.appService.postData('changeProperty',account);
+	getRegionData(){
+		return this.appService.getData('region',true);
 	}
 
-	toReincarnate():Promise<Account>{
-		return this.appService.getData('toReincarnate',true);
-	}
-
-	reincarnate(){
-		return this.appService.postData('reincarnate',{});
-	}
 }

@@ -8,4 +8,7 @@ export class NetMessage{
 		this.content = content;
 		this.autoClose = autoClose;
 	}
+
+	public static DANGER:string = "danger";
+	public static SUCCESS:string = "success";
 }

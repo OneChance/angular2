@@ -65,4 +65,14 @@ export class ProfileComponent {
 			}
 		});
 	}
+
+	toReincarnate(){
+		let link = ['/toreincarnate'];
+		this.router.navigate(link);
+	}
+
+	navigateTo(url){
+		let link = ['/'+url];
+		this.router.navigate(link);
+	}
 }

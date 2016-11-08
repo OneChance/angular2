@@ -4,7 +4,6 @@ import 'rxjs/add/operator/toPromise';
 import { Subject } from 'rxjs/Subject';
 import { NetMessage } from './entity/netmessage';
 import { Router } from '@angular/router';
-import { NetObject } from './entity/netobject';
 
 @Injectable()
 export class AppService {
@@ -51,5 +50,10 @@ export class AppService {
 	public serverError() {
 		this.receiveMsg(new NetMessage("danger", "server_error", true));
 		return Promise.reject('server-error');
+	}
+
+	public routeTo(url){
+		let link = [url];
+		this.router.navigate(link);
 	}
 }

@@ -59,6 +59,14 @@ var ProfileComponent = (function () {
             }
         });
     };
+    ProfileComponent.prototype.toReincarnate = function () {
+        var link = ['/toreincarnate'];
+        this.router.navigate(link);
+    };
+    ProfileComponent.prototype.navigateTo = function (url) {
+        var link = ['/' + url];
+        this.router.navigate(link);
+    };
     ProfileComponent = __decorate([
         core_1.Component({
             selector: 'my-app',

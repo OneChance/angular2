@@ -11,24 +11,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 require('rxjs/add/operator/toPromise');
 var app_service_1 = require('../app.service');
-var RoleService = (function () {
-    function RoleService(appService) {
+var RegionService = (function () {
+    function RegionService(appService) {
         this.appService = appService;
     }
-    RoleService.prototype.changeProperty = function (account) {
-        return this.appService.postData('changeProperty', account);
+    RegionService.prototype.getRegionData = function () {
+        return this.appService.getData('region', true);
     };
-    RoleService.prototype.toReincarnate = function () {
-        return this.appService.getData('toReincarnate', true);
-    };
-    RoleService.prototype.reincarnate = function () {
-        return this.appService.postData('reincarnate', {});
-    };
-    RoleService = __decorate([
+    RegionService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [app_service_1.AppService])
-    ], RoleService);
-    return RoleService;
+    ], RegionService);
+    return RegionService;
 }());
-exports.RoleService = RoleService;
-//# sourceMappingURL=role.service.js.map
+exports.RegionService = RegionService;
+//# sourceMappingURL=region.service.js.map

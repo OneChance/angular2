@@ -54,6 +54,10 @@ var AppService = (function () {
         this.receiveMsg(new netmessage_1.NetMessage("danger", "server_error", true));
         return Promise.reject('server-error');
     };
+    AppService.prototype.routeTo = function (url) {
+        var link = [url];
+        this.router.navigate(link);
+    };
     AppService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http, router_1.Router])

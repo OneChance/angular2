@@ -20,6 +20,7 @@ export class Account extends NetMessage{
 	public addDef:number;
 	public addDex:number;
 	public addInt:number;
+	public soulget:number;
 
 	constructor(){
 		super("","",true);

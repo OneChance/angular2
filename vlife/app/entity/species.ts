@@ -6,4 +6,5 @@ export class Species{
 	public baseDef:number;
 	public baseDex:number;
 	public baseInt:number;
+	public lifeTime:number;
 }
