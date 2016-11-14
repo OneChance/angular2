@@ -10,30 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
+var app_service_1 = require('../app.service');
 var i18n_pipe_1 = require('../tool/i18n.pipe');
 var login_service_1 = require('../login/login.service');
 var ProfileComponent = (function () {
-    function ProfileComponent(loginService, router, el) {
+    function ProfileComponent(loginService, appService, el) {
         var _this = this;
         this.loginService = loginService;
-        this.router = router;
+        this.appService = appService;
         this.el = el;
         this.lifeComplete = false;
         this.profileImg = "images/profile.png";
         this.loginService.getLoginAccount().then(function (account) { return _this.setAccount(account); });
     }
     ProfileComponent.prototype.property = function () {
-        var link = ['/property'];
-        this.router.navigate(link);
+        this.appService.routeTo('/property');
     };
     ProfileComponent.prototype.signOut = function () {
         var _this = this;
         this.loginService.loginOut().then(function (netObject) { return _this.loginOut(); });
     };
     ProfileComponent.prototype.loginOut = function () {
-        var link = ['/login'];
-        this.router.navigate(link);
+        this.appService.routeTo('/login');
     };
     ProfileComponent.prototype.setAccount = function (account) {
         this.account = account;
@@ -61,11 +59,10 @@ var ProfileComponent = (function () {
     };
     ProfileComponent.prototype.toReincarnate = function () {
         var link = ['/toreincarnate'];
-        this.router.navigate(link);
+        this.appService.routeTo('/toreincarnate');
     };
     ProfileComponent.prototype.navigateTo = function (url) {
-        var link = ['/' + url];
-        this.router.navigate(link);
+        this.appService.routeTo('/' + url);
     };
     ProfileComponent = __decorate([
         core_1.Component({
@@ -74,7 +71,7 @@ var ProfileComponent = (function () {
             pipes: [i18n_pipe_1.Translate],
             providers: [login_service_1.LoginService]
         }), 
-        __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router, core_1.ElementRef])
+        __metadata('design:paramtypes', [login_service_1.LoginService, app_service_1.AppService, core_1.ElementRef])
     ], ProfileComponent);
     return ProfileComponent;
 }());

@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
 var account_1 = require('../entity/account');
 var netmessage_1 = require('../entity/netmessage');
 var i18n_pipe_1 = require('../tool/i18n.pipe');
@@ -19,12 +18,11 @@ var role_service_1 = require('./role.service');
 var app_service_1 = require('../app.service');
 var property_operator_component_1 = require('./property-operator.component');
 var PropertyComponent = (function () {
-    function PropertyComponent(roleService, appService, loginService, router, el) {
+    function PropertyComponent(roleService, appService, loginService, el) {
         var _this = this;
         this.roleService = roleService;
         this.appService = appService;
         this.loginService = loginService;
-        this.router = router;
         this.el = el;
         this.loginService.getLoginAccount().then(function (account) { return _this.setAccount(account); });
     }
@@ -56,7 +54,7 @@ var PropertyComponent = (function () {
             providers: [login_service_1.LoginService, role_service_1.RoleService],
             directives: [property_operator_component_1.PropertyOperatorComponent]
         }), 
-        __metadata('design:paramtypes', [role_service_1.RoleService, app_service_1.AppService, login_service_1.LoginService, router_1.Router, core_1.ElementRef])
+        __metadata('design:paramtypes', [role_service_1.RoleService, app_service_1.AppService, login_service_1.LoginService, core_1.ElementRef])
     ], PropertyComponent);
     return PropertyComponent;
 }());

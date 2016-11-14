@@ -1,6 +1,6 @@
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 import { Component, ElementRef, Inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { AppService } from '../app.service';
 import { Account } from '../entity/account';
 import { Translate } from '../tool/i18n.pipe';
 import { LoginService } from '../login/login.service';
@@ -20,13 +20,12 @@ export class ProfileComponent {
 	lifeComplete: boolean = false;
 	profileImg: string = "images/profile.png";
 
-	constructor(private loginService: LoginService, private router: Router, private el: ElementRef) {
+	constructor(private loginService: LoginService, private appService:AppService, private el: ElementRef) {
 		this.loginService.getLoginAccount().then(account => this.setAccount(account));
 	}
 
 	property() {
-		let link = ['/property'];
-		this.router.navigate(link);
+		this.appService.routeTo('/property');
 	}
 
 	signOut() {
@@ -34,12 +33,10 @@ export class ProfileComponent {
 	}
 
 	loginOut() {
-		let link = ['/login'];
-		this.router.navigate(link);
+		this.appService.routeTo('/login');
 	}
 
 	setAccount(account: Account) {
-
 		this.account = account;
 		this.profileImg = "images/" + account.species.name + "/" + account.level + ".png";
 
@@ -68,11 +65,10 @@ export class ProfileComponent {
 
 	toReincarnate(){
 		let link = ['/toreincarnate'];
-		this.router.navigate(link);
+		this.appService.routeTo('/toreincarnate');
 	}
 
 	navigateTo(url){
-		let link = ['/'+url];
-		this.router.navigate(link);
+		this.appService.routeTo('/'+url);
 	}
 }

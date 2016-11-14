@@ -4,6 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import { Subject } from 'rxjs/Subject';
 import { NetMessage } from './entity/netmessage';
 import { Router } from '@angular/router';
+import { Account } from './entity/account';
 
 @Injectable()
 export class AppService {

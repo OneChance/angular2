@@ -3243,6 +3243,7 @@ interface JQuery {
     queue(queueName: string, callback: Function): JQuery;
 
     countdown(...args: any[]): any;
+    treeview(...args: any[]): any;
 }
 declare module "jquery" {
     export = jQuery;

@@ -12,7 +12,10 @@
 						{{ "region" | translate }}
 					</h2>
 					<hr class="star-primary">
-					<div id="treeview5" class="" style="text-align:left;"></div>
+					<div *ngIf="infoShow">
+						<h5>{{ "region_info" | translate }}</h5>
+					</div>
+					<div id="treeview5" class="" style="text-align:left;"></div>				
 				</div>
 			</div>
 		</div>

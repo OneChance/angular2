@@ -207,6 +207,10 @@ var lang = {
     "world": {
         "zh-CN": "世界",
         "en-US": "World"
+    },
+    "region_info": {
+        "zh-CN": "区域信息",
+        "en-US": "Region Info"
     }
 };
 exports.lang = lang;

@@ -1,6 +1,5 @@
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 import { Component,ElementRef,Inject} from '@angular/core';
-import { Router } from '@angular/router';
 import { Account } from '../entity/account';
 import { NetMessage } from '../entity/netmessage';
 import { Translate } from '../tool/i18n.pipe';
@@ -22,7 +21,7 @@ export class PropertyComponent{
 
 	account:Account;
 
-	constructor(private roleService:RoleService,private appService:AppService,private loginService:LoginService,private router:Router,private el:ElementRef){
+	constructor(private roleService:RoleService,private appService:AppService,private loginService:LoginService,private el:ElementRef){
 		this.loginService.getLoginAccount().then(account=>this.setAccount(account));
 	}
 
